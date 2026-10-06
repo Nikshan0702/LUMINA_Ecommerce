@@ -2,7 +2,9 @@ import axios from 'axios';
 
 const apiBaseUrl = import.meta.env.VITE_API_URL 
   ? `${import.meta.env.VITE_API_URL.replace(/\/$/, '')}/api`
-  : '/api';
+  : (import.meta.env.PROD 
+      ? 'https://lumina-ecommerce-gmqq.onrender.com/api' 
+      : '/api');
 
 const api = axios.create({
   baseURL: apiBaseUrl

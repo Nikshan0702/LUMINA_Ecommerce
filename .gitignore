@@ -19,6 +19,7 @@ server/.env.*
 client/.env
 client/.env.*
 !client/.env.example
+!client/.env.production
 
 # ==========================================
 # Production Builds & Bundler Caches
