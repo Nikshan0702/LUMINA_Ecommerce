@@ -158,7 +158,7 @@ const Cart = () => {
           </button>
 
           <div className="space-y-2 pt-2 border-t border-[#F6F1FB] text-[11px] text-[#6B6870]">
-            <p>✓ Support for PayHere Sandbox Online Gateway</p>
+            <p>✓ Support for PayHere Online Gateway & Cards</p>
             <p>✓ Instant 1-Click WhatsApp Direct Order</p>
             <p>✓ 100% Genuine, certified cosmetics</p>
           </div>

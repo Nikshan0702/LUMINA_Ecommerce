@@ -210,7 +210,7 @@ const Home = () => {
               </div>
               <div>
                 <h4 className="text-sm font-bold text-[#171719]">PayHere Secure</h4>
-                <p className="text-xs text-[#6B6870] mt-0.5">Verified sandbox gateway</p>
+                <p className="text-xs text-[#6B6870] mt-0.5">Verified payment gateway</p>
               </div>
             </div>
 
@@ -328,7 +328,7 @@ const Home = () => {
               Designed for effortless, glowing everyday care.
             </h3>
             <p className="text-sm text-[#6B6870] leading-relaxed">
-              Experience safe PayHere Sandbox online test checkout or instant one-click order messaging via WhatsApp. Flat Rs. 500 delivery island-wide.
+              Experience safe PayHere online card checkout or instant one-click order messaging via WhatsApp. Flat Rs. 500 delivery island-wide.
             </p>
             <div className="pt-2 flex flex-wrap gap-4">
               <Link

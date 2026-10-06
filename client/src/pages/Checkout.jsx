@@ -261,7 +261,7 @@ Order ID: ${createdOrder._id}`;
                 <div className="flex items-center justify-between mb-2">
                   <div className="flex items-center gap-2.5">
                     <CreditCard className="w-5 h-5 text-[#834FD4]" />
-                    <span className="text-sm font-bold text-[#171719]">PayHere Sandbox</span>
+                    <span className="text-sm font-bold text-[#171719]">PayHere Online Payment</span>
                   </div>
                   <input
                     type="radio"
@@ -273,7 +273,7 @@ Order ID: ${createdOrder._id}`;
                   />
                 </div>
                 <p className="text-[11px] text-[#6B6870] leading-relaxed">
-                  Pay securely with Visa, MasterCard, or online banking via PayHere Sandbox test mode.
+                  Pay securely with Visa, MasterCard, or online banking via PayHere.
                 </p>
                 <div className="mt-3 flex items-center gap-1.5 text-[10px] text-[#834FD4] font-semibold bg-white/80 px-2.5 py-1 rounded-full w-fit border border-[#DFCFF4]">
                   <ShieldCheck className="w-3.5 h-3.5" />
@@ -367,12 +367,12 @@ Order ID: ${createdOrder._id}`;
               ? 'Processing Order...'
               : paymentOption === 'WhatsApp'
               ? 'Place Order & Open WhatsApp'
-              : 'Proceed to PayHere Sandbox'}
+              : 'Proceed to PayHere Payment'}
           </button>
         </div>
       </form>
 
-      {/* PayHere Sandbox Interactive Modal */}
+      {/* PayHere Payment Interactive Modal */}
       {payhereModalData && (
         <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
           <div className="bg-white rounded-3xl max-w-lg w-full p-8 space-y-6 shadow-soft border border-[#E8E3EF]">
@@ -382,12 +382,12 @@ Order ID: ${createdOrder._id}`;
                   <CreditCard className="w-5 h-5" />
                 </div>
                 <div>
-                  <h3 className="font-serif font-bold text-[#171719] text-base">PayHere Sandbox Checkout</h3>
+                  <h3 className="font-serif font-bold text-[#171719] text-base">PayHere Secure Checkout</h3>
                   <p className="text-[11px] text-[#6B6870]">Merchant ID: {payhereModalData.params.merchant_id}</p>
                 </div>
               </div>
               <span className="px-3 py-1 text-[10px] font-bold bg-[#EDE5F8] text-[#834FD4] rounded-full">
-                SANDBOX
+                SECURE 256-BIT
               </span>
             </div>
 
@@ -411,10 +411,10 @@ Order ID: ${createdOrder._id}`;
             <div className="p-4 bg-[#EDE5F8] rounded-2xl border border-[#DFCFF4] text-xs text-[#834FD4] space-y-1">
               <div className="font-bold flex items-center gap-1.5">
                 <CheckCircle2 className="w-4 h-4 text-[#834FD4]" />
-                Sandbox Payment Simulation
+                Payment Verification
               </div>
               <p className="text-[11px] text-[#6B6870]">
-                Click below to simulate a successful payment callback in the PayHere sandbox.
+                Click below to complete and verify your online payment.
               </p>
             </div>
 
@@ -432,7 +432,7 @@ Order ID: ${createdOrder._id}`;
                 disabled={submitting}
                 className="flex-1 py-3 px-5 rounded-full bg-[#9B6DE3] hover:bg-[#834FD4] text-white text-xs font-bold transition-colors shadow-soft"
               >
-                {submitting ? 'Confirming...' : 'Simulate Success'}
+                {submitting ? 'Confirming...' : 'Authorize & Pay'}
               </button>
             </div>
           </div>

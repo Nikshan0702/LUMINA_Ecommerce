@@ -182,7 +182,7 @@ const MyOrders = () => {
                         </span>
                       ) : (
                         <span className="inline-flex items-center gap-1 text-[#171719] font-semibold">
-                          <CreditCard className="w-3.5 h-3.5 text-[#834FD4]" /> PayHere Sandbox
+                          <CreditCard className="w-3.5 h-3.5 text-[#834FD4]" /> PayHere Online Payment
                         </span>
                       )}
                     </p>

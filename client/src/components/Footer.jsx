@@ -87,7 +87,7 @@ const Footer = () => {
                 Island-wide Courier (Flat Rs. 500)
               </li>
               <li>
-                PayHere Sandbox Verified Gateway
+                PayHere Secure Payment Gateway
               </li>
               <li>
                 Instant WhatsApp Ordering
@@ -121,7 +121,7 @@ const Footer = () => {
           <p>© {new Date().getFullYear()} Lumina Cosmetics & Beauty Store. All Rights Reserved.</p>
           <div className="flex items-center gap-3">
             <span className="text-[11px] bg-[#232228] px-3 py-1 rounded-full text-[#B58EED] border border-[#373440]">
-              PayHere Sandbox Certified
+              PayHere Secure Certified
             </span>
             <span className="text-[11px] bg-[#232228] px-3 py-1 rounded-full text-[#B58EED] border border-[#373440]">
               WhatsApp Live Orders

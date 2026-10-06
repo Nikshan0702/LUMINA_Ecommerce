@@ -217,7 +217,7 @@ const ProductDetail = () => {
           <div className="pt-6 border-t border-[#F6F1FB] space-y-2.5 text-xs text-[#6B6870]">
             <div className="flex items-center gap-2.5">
               <Check className="w-4 h-4 text-[#834FD4] shrink-0" />
-              <span>PayHere secure sandbox payment gateway</span>
+              <span>PayHere secure online payment gateway</span>
             </div>
             <div className="flex items-center gap-2.5">
               <Check className="w-4 h-4 text-[#834FD4] shrink-0" />
