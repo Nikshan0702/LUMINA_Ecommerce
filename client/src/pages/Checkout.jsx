@@ -406,7 +406,7 @@ Order ID: ${createdOrder._id}`;
                 {formatPrice(payhereModalData.order.total)}
               </div>
               <p className="text-[11px] text-[#6B6870] pt-0.5">
-                Order #{payhereModalData.order._id.slice(-6).toUpperCase()} • {cart.length} item(s)
+                {cart.length} {cart.length === 1 ? 'item' : 'items'} in order
               </p>
             </div>
 

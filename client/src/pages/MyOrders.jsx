@@ -118,11 +118,9 @@ const MyOrders = () => {
               {/* Order Header */}
               <div className="bg-[#FAF9FD] p-5 sm:p-6 border-b border-[#E8E3EF] flex flex-wrap items-center justify-between gap-4 text-xs">
                 <div>
-                  <span className="text-[#6B6870]">Order Reference:</span>{' '}
-                  <span className="font-mono font-bold text-[#171719] ml-1">{order._id}</span>
-                  <div className="text-[11px] text-[#6B6870] mt-0.5">
+                  <span className="text-xs font-semibold text-[#171719]">
                     Placed on {formatDate(order.createdAt)}
-                  </div>
+                  </span>
                 </div>
 
                 <div className="flex flex-wrap items-center gap-2.5">
