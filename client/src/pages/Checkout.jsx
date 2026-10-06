@@ -410,64 +410,52 @@ Order ID: ${createdOrder._id}`;
               </p>
             </div>
 
-            {/* Simulated Payment Card Form */}
-            <div className="space-y-3.5 text-xs">
-              <div>
-                <label className="block text-[#171719] font-semibold mb-1">Cardholder Name</label>
-                <input
-                  type="text"
-                  readOnly
-                  value={formData.name || 'Valued Customer'}
-                  className="w-full px-3.5 py-2.5 bg-[#FAF9FD] border border-[#E8E3EF] rounded-xl text-[#171719] font-medium outline-none"
-                />
+            {/* Order & Customer Summary */}
+            <div className="bg-[#FAF9FD] p-4 rounded-2xl border border-[#E8E3EF] space-y-2.5 text-xs">
+              <div className="flex justify-between items-center text-[#6B6870]">
+                <span>Customer</span>
+                <span className="font-semibold text-[#171719]">{formData.name || 'Valued Customer'}</span>
               </div>
-
-              <div>
-                <label className="block text-[#171719] font-semibold mb-1">Card Number</label>
-                <div className="relative">
-                  <input
-                    type="text"
-                    readOnly
-                    value="•••• •••• •••• 4242"
-                    className="w-full pl-3.5 pr-20 py-2.5 bg-[#FAF9FD] border border-[#E8E3EF] rounded-xl text-[#171719] font-mono font-medium outline-none"
-                  />
-                  <div className="absolute right-3 top-2.5 flex items-center gap-1">
-                    <span className="px-1.5 py-0.5 text-[9px] font-bold bg-[#EDE5F8] text-[#834FD4] rounded">
-                      VISA
-                    </span>
-                    <span className="px-1.5 py-0.5 text-[9px] font-bold bg-[#FAF9FD] text-[#6B6870] rounded border border-[#E8E3EF]">
-                      MC
-                    </span>
-                  </div>
-                </div>
+              <div className="flex justify-between items-center text-[#6B6870]">
+                <span>Contact</span>
+                <span className="font-medium text-[#171719]">{formData.phone}</span>
               </div>
+              <div className="flex justify-between items-center text-[#6B6870]">
+                <span>Delivery Address</span>
+                <span className="font-medium text-[#171719] text-right truncate max-w-[200px]">{formData.address}, {formData.city}</span>
+              </div>
+              <div className="pt-2 border-t border-[#E8E3EF] flex justify-between items-center text-[#6B6870]">
+                <span>Payment Channel</span>
+                <span className="font-semibold text-[#834FD4]">PayHere Online Gateway</span>
+              </div>
+            </div>
 
-              <div className="grid grid-cols-2 gap-3">
-                <div>
-                  <label className="block text-[#171719] font-semibold mb-1">Expires</label>
-                  <input
-                    type="text"
-                    readOnly
-                    value="12 / 28"
-                    className="w-full px-3.5 py-2.5 bg-[#FAF9FD] border border-[#E8E3EF] rounded-xl text-[#171719] font-mono outline-none"
-                  />
-                </div>
-                <div>
-                  <label className="block text-[#171719] font-semibold mb-1">CVV</label>
-                  <input
-                    type="password"
-                    readOnly
-                    value="•••"
-                    className="w-full px-3.5 py-2.5 bg-[#FAF9FD] border border-[#E8E3EF] rounded-xl text-[#171719] font-mono outline-none"
-                  />
-                </div>
+            {/* Accepted Methods */}
+            <div className="space-y-1.5">
+              <span className="text-[11px] text-[#6B6870] block text-center">Supported Payment Methods</span>
+              <div className="flex items-center justify-center gap-2 flex-wrap">
+                <span className="px-2 py-1 text-[10px] font-bold bg-[#FAF9FD] border border-[#E8E3EF] rounded-md text-[#171719]">
+                  VISA
+                </span>
+                <span className="px-2 py-1 text-[10px] font-bold bg-[#FAF9FD] border border-[#E8E3EF] rounded-md text-[#171719]">
+                  MasterCard
+                </span>
+                <span className="px-2 py-1 text-[10px] font-bold bg-[#FAF9FD] border border-[#E8E3EF] rounded-md text-[#171719]">
+                  AMEX
+                </span>
+                <span className="px-2 py-1 text-[10px] font-bold bg-[#EDE5F8] text-[#834FD4] rounded-md">
+                  Genie
+                </span>
+                <span className="px-2 py-1 text-[10px] font-bold bg-[#EDE5F8] text-[#834FD4] rounded-md">
+                  FriMi
+                </span>
               </div>
             </div>
 
             {/* End-to-End Encryption Guarantee */}
             <div className="flex items-center justify-center gap-2 text-[11px] text-[#6B6870] pt-1">
               <ShieldCheck className="w-4 h-4 text-[#50805C]" />
-              <span>256-bit SSL encrypted secure transaction</span>
+              <span>256-bit SSL encrypted secure payment</span>
             </div>
 
             {/* Actions */}
