@@ -22,7 +22,11 @@ const PORT = process.env.PORT || 5001;
 app.use(cors());
 app.use(express.json());
 
-// API Routes
+// Root and Health Check
+app.get('/', (req, res) => {
+  res.send('Lumina Cosmetics & Beauty Store API is running');
+});
+
 app.get('/api/health', (req, res) => {
   res.json({
     status: 'ok',
