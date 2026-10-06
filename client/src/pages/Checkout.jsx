@@ -4,7 +4,7 @@ import { ShieldCheck, MessageCircle, CreditCard, ArrowLeft, AlertCircle, CheckCi
 import { useCart } from '../context/CartContext';
 import { useAuth } from '../context/AuthContext';
 import api from '../services/api';
-import { formatPrice } from '../utils/formatters';
+import { formatPrice, formatOrderId } from '../utils/formatters';
 
 const WHATSAPP_STORE_NUMBER = '94771129911';
 
@@ -95,7 +95,7 @@ Total: Rs. ${total}
 Address:
 ${formData.address}, ${formData.city}
 
-Order ID: ${createdOrder._id}`;
+Order ID: ${formatOrderId(createdOrder._id)}`;
 
         const whatsappUrl = `https://wa.me/${WHATSAPP_STORE_NUMBER}?text=${encodeURIComponent(whatsappMessage)}`;
         

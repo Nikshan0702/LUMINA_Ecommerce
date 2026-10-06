@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Eye, Search, MessageCircle, CreditCard, ChevronDown, CheckCircle2, Clock } from 'lucide-react';
 import AdminNavbar from '../../components/AdminNavbar';
 import api from '../../services/api';
-import { formatPrice, formatDate } from '../../utils/formatters';
+import { formatPrice, formatDate, formatOrderId, getPaymentStatusBadge } from '../../utils/formatters';
 
 const orderStatusOptions = ['Pending', 'Confirmed', 'Processing', 'Shipped', 'Delivered', 'Cancelled'];
 const paymentStatusOptions = ['Pending', 'Paid', 'Failed'];
@@ -115,8 +115,8 @@ const AdminOrders = () => {
                 ) : filteredOrders.length > 0 ? (
                   filteredOrders.map((order) => (
                     <tr key={order._id} className="hover:bg-[#FAF9FD]/60 transition-colors">
-                      <td className="px-6 py-4 font-mono font-bold text-[#171719]">
-                        {order._id.slice(-6)}
+                      <td className="px-6 py-4 font-mono font-bold text-xs text-[#834FD4]">
+                        {formatOrderId(order._id)}
                       </td>
                       <td className="px-6 py-4">
                         <div className="font-semibold text-[#171719]">{order.customerName}</div>
@@ -203,7 +203,7 @@ const AdminOrders = () => {
             <div className="flex items-center justify-between border-b border-[#F6F1FB] pb-4">
               <div>
                 <h3 className="font-serif font-bold text-[#171719] text-base">
-                  Order Details: {selectedOrder._id}
+                  Order Details: {formatOrderId(selectedOrder._id)}
                 </h3>
                 <span className="text-[#6B6870] text-[11px]">
                   Placed on {formatDate(selectedOrder.createdAt)}
@@ -227,8 +227,11 @@ const AdminOrders = () => {
               <p>
                 <strong className="text-[#171719]">Delivery Address:</strong> {selectedOrder.shippingAddress}
               </p>
-              <p>
-                <strong className="text-[#171719]">Payment:</strong> {selectedOrder.paymentMethod} ({selectedOrder.paymentStatus})
+              <p className="flex items-center gap-2">
+                <strong className="text-[#171719]">Payment:</strong> {selectedOrder.paymentMethod} •{' '}
+                <span className={`px-2 py-0.5 rounded-full text-[10px] font-bold border ${getPaymentStatusBadge(selectedOrder.paymentStatus)}`}>
+                  {selectedOrder.paymentStatus}
+                </span>
               </p>
             </div>
 

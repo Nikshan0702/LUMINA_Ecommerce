@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Package, ShoppingBag, Clock, DollarSign, ArrowRight, ShieldCheck } from 'lucide-react';
 import AdminNavbar from '../../components/AdminNavbar';
 import api from '../../services/api';
-import { formatPrice, formatDate } from '../../utils/formatters';
+import { formatPrice, formatDate, formatOrderId, getOrderStatusBadge, getPaymentStatusBadge } from '../../utils/formatters';
 
 const AdminDashboard = () => {
   const [stats, setStats] = useState(null);
@@ -143,19 +143,22 @@ const AdminDashboard = () => {
                     {stats.recentOrders && stats.recentOrders.length > 0 ? (
                       stats.recentOrders.map((order) => (
                         <tr key={order._id} className="hover:bg-[#FAF9FD]/70 transition-colors">
-                          <td className="px-6 py-4 font-mono font-bold text-[#171719]">
-                            {order._id.slice(-6)}
+                          <td className="px-6 py-4 font-mono font-bold text-xs text-[#834FD4]">
+                            {formatOrderId(order._id)}
                           </td>
                           <td className="px-6 py-4 text-[#171719] font-medium">
                             {order.customerName}
                           </td>
                           <td className="px-6 py-4">
-                            <span className="px-2.5 py-1 rounded-full font-semibold text-[10px] bg-[#FAF9FD] text-[#171719] border border-[#E8E3EF]">
-                              {order.paymentMethod} ({order.paymentStatus})
-                            </span>
+                            <div className="flex items-center gap-1.5 flex-wrap">
+                              <span className="text-xs text-[#171719] font-medium">{order.paymentMethod}</span>
+                              <span className={`px-2 py-0.5 rounded-full font-bold text-[10px] border ${getPaymentStatusBadge(order.paymentStatus)}`}>
+                                {order.paymentStatus}
+                              </span>
+                            </div>
                           </td>
                           <td className="px-6 py-4">
-                            <span className="px-3 py-1 rounded-full font-bold text-[10px] bg-[#FBEFE6] text-[#B86B3E] border border-[#F5DAC7]">
+                            <span className={`px-2.5 py-1 rounded-full font-bold text-[10px] border ${getOrderStatusBadge(order.orderStatus)}`}>
                               {order.orderStatus}
                             </span>
                           </td>
