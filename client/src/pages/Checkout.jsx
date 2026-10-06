@@ -28,12 +28,12 @@ const Checkout = () => {
 
   if (cart.length === 0) {
     return (
-      <div className="max-w-xl mx-auto py-20 px-4 text-center space-y-4">
-        <h2 className="text-xl font-bold text-slate-800">Your cart is empty</h2>
-        <p className="text-xs text-slate-500">Add products to your cart before proceeding to checkout.</p>
+      <div className="max-w-xl mx-auto py-24 px-4 text-center space-y-4">
+        <h2 className="text-2xl font-serif font-bold text-[#171719]">Your bag is empty</h2>
+        <p className="text-xs text-[#6B6870]">Add products to your shopping bag before proceeding to checkout.</p>
         <Link
           to="/products"
-          className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-emerald-700 text-white text-xs font-semibold"
+          className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#9B6DE3] hover:bg-[#834FD4] text-white text-xs font-bold transition-colors shadow-soft"
         >
           <ArrowLeft className="w-4 h-4" /> Go to Products
         </Link>
@@ -57,7 +57,6 @@ const Checkout = () => {
     setSubmitting(true);
 
     try {
-      // 1. Prepare backend order payload
       const orderPayload = {
         items: cart.map((item) => ({
           product: item.product,
@@ -72,11 +71,9 @@ const Checkout = () => {
         paymentMethod: paymentOption
       };
 
-      // 2. Submit order to server
       const { data: createdOrder } = await api.post('/orders', orderPayload);
 
       if (paymentOption === 'WhatsApp') {
-        // Build the formatted WhatsApp message as specified in assessment
         let orderItemsText = '';
         cart.forEach((item, index) => {
           orderItemsText += `${index + 1}. ${item.name} - ${item.quantity} x Rs. ${item.price}\n`;
@@ -106,7 +103,6 @@ Order ID: ${createdOrder._id}`;
         window.open(whatsappUrl, '_blank');
         navigate('/my-orders');
       } else {
-        // PayHere Sandbox flow
         const { data: payParams } = await api.get(`/orders/${createdOrder._id}/payhere-params`);
         setPayhereModalData({
           order: createdOrder,
@@ -120,7 +116,6 @@ Order ID: ${createdOrder._id}`;
     }
   };
 
-  // Handler for simulating / executing the PayHere Sandbox test payment
   const handlePayHereComplete = async () => {
     if (!payhereModalData) return;
     try {
@@ -137,21 +132,24 @@ Order ID: ${createdOrder._id}`;
   };
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-8">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-10">
       <div>
         <Link
           to="/cart"
-          className="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-600 hover:text-emerald-700 mb-4"
+          className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#6B6870] hover:text-[#171719] mb-4"
         >
-          <ArrowLeft className="w-4 h-4" /> Return to Cart
+          <ArrowLeft className="w-4 h-4" /> Return to Bag
         </Link>
-        <h1 className="text-2xl sm:text-3xl font-serif font-bold text-slate-900">
-          Checkout & Shipping
+        <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#834FD4] block">
+          SECURE CHECKOUT
+        </span>
+        <h1 className="text-3xl sm:text-4xl font-serif font-bold text-[#171719] mt-1">
+          Shipping & Payment
         </h1>
       </div>
 
       {error && (
-        <div className="p-4 bg-rose-50 border border-rose-200 rounded-xl text-rose-700 text-xs font-medium flex items-center gap-2">
+        <div className="p-4 bg-rose-50 border border-rose-200 rounded-2xl text-[#E11D48] text-xs font-medium flex items-center gap-2">
           <AlertCircle className="w-4 h-4 shrink-0" />
           {error}
         </div>
@@ -161,14 +159,14 @@ Order ID: ${createdOrder._id}`;
         {/* Shipping & Payment Options */}
         <div className="lg:col-span-2 space-y-8">
           {/* Customer Details Box */}
-          <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4">
-            <h2 className="text-base font-bold text-slate-800 border-b border-slate-100 pb-3">
-              1. Customer & Delivery Address
+          <div className="bg-white p-7 rounded-3xl border border-[#E8E3EF] shadow-card space-y-5">
+            <h2 className="text-base font-serif font-bold text-[#171719] border-b border-[#F6F1FB] pb-3">
+              1. Delivery Information
             </h2>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <label className="block text-xs font-semibold text-slate-700 mb-1">
+                <label className="block text-xs font-semibold text-[#171719] mb-1.5">
                   Full Name *
                 </label>
                 <input
@@ -178,12 +176,12 @@ Order ID: ${createdOrder._id}`;
                   value={formData.name}
                   onChange={handleChange}
                   placeholder="e.g. Nimasha Perera"
-                  className="w-full px-3.5 py-2 text-xs bg-slate-50 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-600"
+                  className="w-full px-4 py-2.5 text-xs bg-[#FAF9FD] border border-[#E8E3EF] rounded-xl focus:outline-none focus:ring-2 focus:ring-[#9B6DE3] transition-all"
                 />
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-slate-700 mb-1">
+                <label className="block text-xs font-semibold text-[#171719] mb-1.5">
                   Contact Phone Number *
                 </label>
                 <input
@@ -193,12 +191,12 @@ Order ID: ${createdOrder._id}`;
                   value={formData.phone}
                   onChange={handleChange}
                   placeholder="e.g. 0771234567"
-                  className="w-full px-3.5 py-2 text-xs bg-slate-50 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-600"
+                  className="w-full px-4 py-2.5 text-xs bg-[#FAF9FD] border border-[#E8E3EF] rounded-xl focus:outline-none focus:ring-2 focus:ring-[#9B6DE3] transition-all"
                 />
               </div>
 
               <div className="sm:col-span-2">
-                <label className="block text-xs font-semibold text-slate-700 mb-1">
+                <label className="block text-xs font-semibold text-[#171719] mb-1.5">
                   Email Address *
                 </label>
                 <input
@@ -208,12 +206,12 @@ Order ID: ${createdOrder._id}`;
                   value={formData.email}
                   onChange={handleChange}
                   placeholder="name@example.com"
-                  className="w-full px-3.5 py-2 text-xs bg-slate-50 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-600"
+                  className="w-full px-4 py-2.5 text-xs bg-[#FAF9FD] border border-[#E8E3EF] rounded-xl focus:outline-none focus:ring-2 focus:ring-[#9B6DE3] transition-all"
                 />
               </div>
 
               <div className="sm:col-span-2">
-                <label className="block text-xs font-semibold text-slate-700 mb-1">
+                <label className="block text-xs font-semibold text-[#171719] mb-1.5">
                   Street Address / Apartment *
                 </label>
                 <textarea
@@ -223,13 +221,13 @@ Order ID: ${createdOrder._id}`;
                   value={formData.address}
                   onChange={handleChange}
                   placeholder="No. 45, Flower Road"
-                  className="w-full px-3.5 py-2 text-xs bg-slate-50 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-600"
+                  className="w-full px-4 py-2.5 text-xs bg-[#FAF9FD] border border-[#E8E3EF] rounded-xl focus:outline-none focus:ring-2 focus:ring-[#9B6DE3] transition-all"
                 />
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-slate-700 mb-1">
-                  City / Town *
+                <label className="block text-xs font-semibold text-[#171719] mb-1.5">
+                  City / District *
                 </label>
                 <input
                   type="text"
@@ -238,32 +236,32 @@ Order ID: ${createdOrder._id}`;
                   value={formData.city}
                   onChange={handleChange}
                   placeholder="Colombo"
-                  className="w-full px-3.5 py-2 text-xs bg-slate-50 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-600"
+                  className="w-full px-4 py-2.5 text-xs bg-[#FAF9FD] border border-[#E8E3EF] rounded-xl focus:outline-none focus:ring-2 focus:ring-[#9B6DE3] transition-all"
                 />
               </div>
             </div>
           </div>
 
           {/* Payment Method Selector */}
-          <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4">
-            <h2 className="text-base font-bold text-slate-800 border-b border-slate-100 pb-3">
-              2. Select Payment Method
+          <div className="bg-white p-7 rounded-3xl border border-[#E8E3EF] shadow-card space-y-5">
+            <h2 className="text-base font-serif font-bold text-[#171719] border-b border-[#F6F1FB] pb-3">
+              2. Payment Method
             </h2>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {/* PayHere Radio */}
               <label
                 onClick={() => setPaymentOption('PayHere')}
-                className={`p-4 rounded-xl border-2 cursor-pointer flex flex-col justify-between transition-all ${
+                className={`p-5 rounded-2xl border-2 cursor-pointer flex flex-col justify-between transition-all duration-200 ${
                   paymentOption === 'PayHere'
-                    ? 'border-emerald-600 bg-emerald-50/50'
-                    : 'border-slate-200 hover:border-slate-300 bg-white'
+                    ? 'border-[#9B6DE3] bg-[#EDE5F8]'
+                    : 'border-[#E8E3EF] hover:border-[#DFCFF4] bg-white'
                 }`}
               >
                 <div className="flex items-center justify-between mb-2">
-                  <div className="flex items-center gap-2">
-                    <CreditCard className="w-5 h-5 text-emerald-700" />
-                    <span className="text-sm font-bold text-slate-900">PayHere Sandbox</span>
+                  <div className="flex items-center gap-2.5">
+                    <CreditCard className="w-5 h-5 text-[#834FD4]" />
+                    <span className="text-sm font-bold text-[#171719]">PayHere Sandbox</span>
                   </div>
                   <input
                     type="radio"
@@ -271,13 +269,13 @@ Order ID: ${createdOrder._id}`;
                     value="PayHere"
                     checked={paymentOption === 'PayHere'}
                     onChange={() => setPaymentOption('PayHere')}
-                    className="accent-emerald-600"
+                    className="accent-[#9B6DE3]"
                   />
                 </div>
-                <p className="text-[11px] text-slate-500 leading-relaxed">
+                <p className="text-[11px] text-[#6B6870] leading-relaxed">
                   Pay securely with Visa, MasterCard, or online banking via PayHere Sandbox test mode.
                 </p>
-                <div className="mt-3 flex items-center gap-1.5 text-[10px] text-emerald-800 font-semibold bg-emerald-100/60 px-2 py-1 rounded w-fit">
+                <div className="mt-3 flex items-center gap-1.5 text-[10px] text-[#834FD4] font-semibold bg-white/80 px-2.5 py-1 rounded-full w-fit border border-[#DFCFF4]">
                   <ShieldCheck className="w-3.5 h-3.5" />
                   Instant payment verification
                 </div>
@@ -286,16 +284,16 @@ Order ID: ${createdOrder._id}`;
               {/* WhatsApp Radio */}
               <label
                 onClick={() => setPaymentOption('WhatsApp')}
-                className={`p-4 rounded-xl border-2 cursor-pointer flex flex-col justify-between transition-all ${
+                className={`p-5 rounded-2xl border-2 cursor-pointer flex flex-col justify-between transition-all duration-200 ${
                   paymentOption === 'WhatsApp'
-                    ? 'border-emerald-600 bg-emerald-50/50'
-                    : 'border-slate-200 hover:border-slate-300 bg-white'
+                    ? 'border-[#9B6DE3] bg-[#EDE5F8]'
+                    : 'border-[#E8E3EF] hover:border-[#DFCFF4] bg-white'
                 }`}
               >
                 <div className="flex items-center justify-between mb-2">
-                  <div className="flex items-center gap-2">
-                    <MessageCircle className="w-5 h-5 text-emerald-700" />
-                    <span className="text-sm font-bold text-slate-900">Order via WhatsApp</span>
+                  <div className="flex items-center gap-2.5">
+                    <MessageCircle className="w-5 h-5 text-[#834FD4]" />
+                    <span className="text-sm font-bold text-[#171719]">Order via WhatsApp</span>
                   </div>
                   <input
                     type="radio"
@@ -303,13 +301,13 @@ Order ID: ${createdOrder._id}`;
                     value="WhatsApp"
                     checked={paymentOption === 'WhatsApp'}
                     onChange={() => setPaymentOption('WhatsApp')}
-                    className="accent-emerald-600"
+                    className="accent-[#9B6DE3]"
                   />
                 </div>
-                <p className="text-[11px] text-slate-500 leading-relaxed">
-                  Generate your order message automatically and send it directly to our WhatsApp store.
+                <p className="text-[11px] text-[#6B6870] leading-relaxed">
+                  Send your complete shopping bag directly to our beauty advisors on WhatsApp.
                 </p>
-                <div className="mt-3 flex items-center gap-1.5 text-[10px] text-emerald-800 font-semibold bg-emerald-100/60 px-2 py-1 rounded w-fit">
+                <div className="mt-3 flex items-center gap-1.5 text-[10px] text-[#834FD4] font-semibold bg-white/80 px-2.5 py-1 rounded-full w-fit border border-[#DFCFF4]">
                   <MessageCircle className="w-3.5 h-3.5" />
                   Direct Retailer Chat
                 </div>
@@ -319,9 +317,9 @@ Order ID: ${createdOrder._id}`;
         </div>
 
         {/* Order Summary Column */}
-        <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-6 h-fit sticky top-24">
-          <h2 className="text-base font-bold text-slate-800 border-b border-slate-100 pb-3">
-            Order Items ({cart.length})
+        <div className="bg-white p-7 rounded-3xl border border-[#E8E3EF] shadow-card space-y-6 h-fit sticky top-28">
+          <h2 className="text-base font-serif font-bold text-[#171719] border-b border-[#F6F1FB] pb-3">
+            Bag Items ({cart.length})
           </h2>
 
           <div className="space-y-3 max-h-60 overflow-y-auto pr-1">
@@ -331,39 +329,39 @@ Order ID: ${createdOrder._id}`;
                   <img
                     src={item.image}
                     alt={item.name}
-                    className="w-10 h-10 rounded object-cover bg-slate-100 border border-slate-100 shrink-0"
+                    className="w-11 h-11 rounded-xl object-cover bg-[#FAF9FD] border border-[#E8E3EF] shrink-0"
                   />
                   <div>
-                    <span className="font-semibold text-slate-800 line-clamp-1">{item.name}</span>
-                    <span className="text-slate-500 text-[11px]">Qty: {item.quantity}</span>
+                    <span className="font-semibold text-[#171719] line-clamp-1">{item.name}</span>
+                    <span className="text-[#6B6870] text-[11px]">Qty: {item.quantity}</span>
                   </div>
                 </div>
-                <span className="font-bold text-slate-900 shrink-0">
+                <span className="font-bold text-[#171719] shrink-0">
                   {formatPrice(item.price * item.quantity)}
                 </span>
               </div>
             ))}
           </div>
 
-          <div className="border-t border-slate-100 pt-4 space-y-2 text-xs">
-            <div className="flex justify-between text-slate-600">
+          <div className="border-t border-[#F6F1FB] pt-4 space-y-2 text-xs">
+            <div className="flex justify-between text-[#6B6870]">
               <span>Subtotal</span>
-              <span className="font-semibold text-slate-800">{formatPrice(subtotal)}</span>
+              <span className="font-semibold text-[#171719]">{formatPrice(subtotal)}</span>
             </div>
-            <div className="flex justify-between text-slate-600">
+            <div className="flex justify-between text-[#6B6870]">
               <span>Delivery Fee</span>
-              <span className="font-semibold text-slate-800">{formatPrice(deliveryFee)}</span>
+              <span className="font-semibold text-[#171719]">{formatPrice(deliveryFee)}</span>
             </div>
-            <div className="border-t border-slate-100 pt-2 flex justify-between text-sm font-bold text-slate-900">
+            <div className="border-t border-[#F6F1FB] pt-2.5 flex justify-between text-sm font-bold text-[#171719]">
               <span>Total Payable</span>
-              <span className="text-emerald-800 text-base">{formatPrice(total)}</span>
+              <span className="text-[#834FD4] text-lg">{formatPrice(total)}</span>
             </div>
           </div>
 
           <button
             type="submit"
             disabled={submitting}
-            className="w-full py-3.5 px-4 rounded-xl bg-emerald-700 hover:bg-emerald-800 text-white font-bold text-xs flex items-center justify-center gap-2 shadow-sm transition-all disabled:opacity-50"
+            className="w-full py-4 px-6 rounded-full bg-[#9B6DE3] hover:bg-[#834FD4] text-white font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 shadow-soft transition-all duration-200 disabled:opacity-50"
           >
             {submitting
               ? 'Processing Order...'
@@ -377,45 +375,45 @@ Order ID: ${createdOrder._id}`;
       {/* PayHere Sandbox Interactive Modal */}
       {payhereModalData && (
         <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
-          <div className="bg-white rounded-2xl max-w-lg w-full p-6 space-y-5 shadow-2xl border border-slate-100">
-            <div className="flex items-center justify-between border-b border-slate-100 pb-3">
-              <div className="flex items-center gap-2">
-                <div className="w-8 h-8 rounded-full bg-emerald-100 flex items-center justify-center text-emerald-800">
-                  <CreditCard className="w-4 h-4" />
+          <div className="bg-white rounded-3xl max-w-lg w-full p-8 space-y-6 shadow-soft border border-[#E8E3EF]">
+            <div className="flex items-center justify-between border-b border-[#F6F1FB] pb-4">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-2xl bg-[#EDE5F8] flex items-center justify-center text-[#834FD4]">
+                  <CreditCard className="w-5 h-5" />
                 </div>
                 <div>
-                  <h3 className="font-bold text-slate-900 text-sm">PayHere Sandbox Checkout</h3>
-                  <p className="text-[10px] text-slate-500">Merchant ID: {payhereModalData.params.merchant_id}</p>
+                  <h3 className="font-serif font-bold text-[#171719] text-base">PayHere Sandbox Checkout</h3>
+                  <p className="text-[11px] text-[#6B6870]">Merchant ID: {payhereModalData.params.merchant_id}</p>
                 </div>
               </div>
-              <span className="px-2 py-0.5 text-[10px] font-bold bg-amber-100 text-amber-800 rounded">
-                SANDBOX MODE
+              <span className="px-3 py-1 text-[10px] font-bold bg-[#EDE5F8] text-[#834FD4] rounded-full">
+                SANDBOX
               </span>
             </div>
 
-            <div className="bg-slate-50 p-4 rounded-xl space-y-2 text-xs">
+            <div className="bg-[#FAF9FD] p-4 rounded-2xl space-y-2 text-xs border border-[#E8E3EF]">
               <div className="flex justify-between">
-                <span className="text-slate-500">Order ID:</span>
-                <span className="font-mono font-semibold text-slate-800">{payhereModalData.order._id}</span>
+                <span className="text-[#6B6870]">Order Reference:</span>
+                <span className="font-mono font-semibold text-[#171719]">{payhereModalData.order._id}</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-slate-500">Amount:</span>
-                <span className="font-bold text-slate-900">{formatPrice(payhereModalData.order.total)}</span>
+                <span className="text-[#6B6870]">Total Amount:</span>
+                <span className="font-bold text-[#171719]">{formatPrice(payhereModalData.order.total)}</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-slate-500">Hash Verified:</span>
-                <span className="font-mono text-[10px] text-emerald-700 truncate max-w-[200px]">
+                <span className="text-[#6B6870]">Security Checksum:</span>
+                <span className="font-mono text-[10px] text-[#834FD4] truncate max-w-[200px]">
                   {payhereModalData.params.hash}
                 </span>
               </div>
             </div>
 
-            <div className="p-3 bg-emerald-50 rounded-xl border border-emerald-200 text-xs text-emerald-900 space-y-1">
+            <div className="p-4 bg-[#EDE5F8] rounded-2xl border border-[#DFCFF4] text-xs text-[#834FD4] space-y-1">
               <div className="font-bold flex items-center gap-1.5">
-                <CheckCircle2 className="w-4 h-4 text-emerald-600" />
+                <CheckCircle2 className="w-4 h-4 text-[#834FD4]" />
                 Sandbox Payment Simulation
               </div>
-              <p className="text-[11px] text-emerald-800">
+              <p className="text-[11px] text-[#6B6870]">
                 Click below to simulate a successful payment callback in the PayHere sandbox.
               </p>
             </div>
@@ -424,7 +422,7 @@ Order ID: ${createdOrder._id}`;
               <button
                 type="button"
                 onClick={() => setPayhereModalData(null)}
-                className="flex-1 py-2.5 px-4 rounded-xl border border-slate-300 text-xs font-semibold text-slate-700 hover:bg-slate-50"
+                className="flex-1 py-3 px-5 rounded-full border border-[#E8E3EF] text-xs font-semibold text-[#6B6870] hover:bg-[#FAF9FD] transition-colors"
               >
                 Cancel
               </button>
@@ -432,9 +430,9 @@ Order ID: ${createdOrder._id}`;
                 type="button"
                 onClick={handlePayHereComplete}
                 disabled={submitting}
-                className="flex-1 py-2.5 px-4 rounded-xl bg-emerald-700 hover:bg-emerald-800 text-white text-xs font-bold transition-colors"
+                className="flex-1 py-3 px-5 rounded-full bg-[#9B6DE3] hover:bg-[#834FD4] text-white text-xs font-bold transition-colors shadow-soft"
               >
-                {submitting ? 'Confirming...' : 'Simulate Successful Payment'}
+                {submitting ? 'Confirming...' : 'Simulate Success'}
               </button>
             </div>
           </div>

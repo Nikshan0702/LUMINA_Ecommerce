@@ -6,61 +6,61 @@ const Footer = () => {
   const whatsappNumber = '94771234567';
 
   return (
-    <footer className="bg-slate-900 text-slate-300 pt-14 pb-10 border-t border-slate-800">
+    <footer className="bg-[#171719] text-[#FAF9FD] pt-16 pb-12 border-t border-[#2A2930]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-10 mb-14">
           {/* Brand Col */}
           <div className="space-y-4">
-            <div className="flex items-center gap-2 font-serif">
-              <div className="w-7 h-7 rounded-full bg-emerald-500 flex items-center justify-center text-white">
-                <Sparkles className="w-3.5 h-3.5" />
+            <div className="flex items-center gap-2.5">
+              <div className="w-8 h-8 rounded-full bg-[#EDE5F8] flex items-center justify-center text-[#834FD4]">
+                <Sparkles className="w-4 h-4" />
               </div>
-              <span className="text-xl font-bold text-white tracking-wide">LUMINA</span>
+              <span className="text-xl font-serif font-bold text-white tracking-wide">LUMINA</span>
             </div>
-            <p className="text-xs text-slate-400 leading-relaxed">
-              Premium cosmetics, botanical skincare, and luxury beauty essentials crafted to nourish, revitalize, and highlight your natural radiance.
+            <p className="text-xs text-[#9B98A0] leading-relaxed max-w-xs">
+              Clean botanical cosmetics and luxury beauty essentials formulated to nourish, protect, and highlight your everyday radiance.
             </p>
             <div className="pt-2">
               <a
                 href={`https://wa.me/${whatsappNumber}?text=${encodeURIComponent('Hello Lumina Cosmetics, I have an inquiry regarding your products.')}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-xs font-semibold text-emerald-400 bg-emerald-950/60 border border-emerald-800/80 px-3 py-1.5 rounded-full hover:bg-emerald-900/60 transition-colors"
+                className="inline-flex items-center gap-2 text-xs font-semibold text-[#B58EED] bg-[#2A2536] border border-[#443859] px-4 py-2 rounded-full hover:bg-[#342B45] transition-colors"
               >
-                <MessageCircle className="w-3.5 h-3.5 text-emerald-400" />
-                Chat with Beauty Advisor
+                <MessageCircle className="w-3.5 h-3.5 text-[#B58EED]" />
+                Beauty Advisor Live Chat
               </a>
             </div>
           </div>
 
           {/* Quick Categories */}
           <div>
-            <h4 className="text-sm font-semibold text-white tracking-wider uppercase mb-4">
-              Categories
+            <h4 className="text-xs font-bold text-white tracking-[0.15em] uppercase mb-4">
+              Collections
             </h4>
-            <ul className="space-y-2 text-xs">
+            <ul className="space-y-2.5 text-xs text-[#9B98A0]">
               <li>
-                <Link to="/products?category=Skincare" className="hover:text-emerald-400 transition-colors">
+                <Link to="/products?category=Skincare" className="hover:text-white transition-colors">
                   Botanical Skincare
                 </Link>
               </li>
               <li>
-                <Link to="/products?category=Haircare" className="hover:text-emerald-400 transition-colors">
+                <Link to="/products?category=Haircare" className="hover:text-white transition-colors">
                   Haircare & Serums
                 </Link>
               </li>
               <li>
-                <Link to="/products?category=Makeup" className="hover:text-emerald-400 transition-colors">
-                  Luxury Makeup
+                <Link to="/products?category=Makeup" className="hover:text-white transition-colors">
+                  Velvet Makeup
                 </Link>
               </li>
               <li>
-                <Link to="/products?category=Body Care" className="hover:text-emerald-400 transition-colors">
+                <Link to="/products?category=Body Care" className="hover:text-white transition-colors">
                   Body Care & Scrubs
                 </Link>
               </li>
               <li>
-                <Link to="/products?category=Fragrance" className="hover:text-emerald-400 transition-colors">
+                <Link to="/products?category=Fragrance" className="hover:text-white transition-colors">
                   Signature Fragrance
                 </Link>
               </li>
@@ -69,62 +69,62 @@ const Footer = () => {
 
           {/* Customer Care */}
           <div>
-            <h4 className="text-sm font-semibold text-white tracking-wider uppercase mb-4">
+            <h4 className="text-xs font-bold text-white tracking-[0.15em] uppercase mb-4">
               Customer Care
             </h4>
-            <ul className="space-y-2 text-xs">
+            <ul className="space-y-2.5 text-xs text-[#9B98A0]">
               <li>
-                <Link to="/my-orders" className="hover:text-emerald-400 transition-colors">
-                  Track My Orders
+                <Link to="/my-orders" className="hover:text-white transition-colors">
+                  Track Past Orders
                 </Link>
               </li>
               <li>
-                <Link to="/cart" className="hover:text-emerald-400 transition-colors">
-                  Shopping Cart
+                <Link to="/cart" className="hover:text-white transition-colors">
+                  Shopping Bag
                 </Link>
               </li>
-              <li className="text-slate-400">
-                Island-wide Delivery in 2-3 Business Days
+              <li>
+                Island-wide Courier (Flat Rs. 500)
               </li>
-              <li className="text-slate-400">
-                Secure Sandbox Payments via PayHere
+              <li>
+                PayHere Sandbox Verified Gateway
               </li>
-              <li className="text-slate-400">
-                Direct WhatsApp Ordering Available
+              <li>
+                Instant WhatsApp Ordering
               </li>
             </ul>
           </div>
 
-          {/* Store Info */}
+          {/* Boutique Contact */}
           <div>
-            <h4 className="text-sm font-semibold text-white tracking-wider uppercase mb-4">
-              Store Contact
+            <h4 className="text-xs font-bold text-white tracking-[0.15em] uppercase mb-4">
+              Boutique Location
             </h4>
-            <div className="space-y-2.5 text-xs text-slate-400">
-              <div className="flex items-center gap-2">
-                <MapPin className="w-4 h-4 text-emerald-500 shrink-0" />
+            <div className="space-y-3 text-xs text-[#9B98A0]">
+              <div className="flex items-start gap-2.5">
+                <MapPin className="w-4 h-4 text-[#B58EED] shrink-0 mt-0.5" />
                 <span>No. 124, Galle Road, Colombo 03, Sri Lanka</span>
               </div>
-              <div className="flex items-center gap-2">
-                <Phone className="w-4 h-4 text-emerald-500 shrink-0" />
+              <div className="flex items-center gap-2.5">
+                <Phone className="w-4 h-4 text-[#B58EED] shrink-0" />
                 <span>+94 77 123 4567</span>
               </div>
-              <div className="flex items-center gap-2">
-                <Mail className="w-4 h-4 text-emerald-500 shrink-0" />
+              <div className="flex items-center gap-2.5">
+                <Mail className="w-4 h-4 text-[#B58EED] shrink-0" />
                 <span>hello@luminacosmetics.lk</span>
               </div>
             </div>
           </div>
         </div>
 
-        <div className="pt-8 border-t border-slate-800 text-center text-xs text-slate-500 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p>© {new Date().getFullYear()} Lumina Cosmetics Store. Technical Assessment Submission.</p>
+        <div className="pt-8 border-t border-[#2A2930] text-center text-xs text-[#6B6870] flex flex-col sm:flex-row items-center justify-between gap-4">
+          <p>© {new Date().getFullYear()} Lumina Cosmetics & Beauty Store. All Rights Reserved.</p>
           <div className="flex items-center gap-3">
-            <span className="text-[11px] bg-slate-800 px-2.5 py-1 rounded text-slate-400">
+            <span className="text-[11px] bg-[#232228] px-3 py-1 rounded-full text-[#B58EED] border border-[#373440]">
               PayHere Sandbox Certified
             </span>
-            <span className="text-[11px] bg-slate-800 px-2.5 py-1 rounded text-slate-400">
-              WhatsApp Integrated
+            <span className="text-[11px] bg-[#232228] px-3 py-1 rounded-full text-[#B58EED] border border-[#373440]">
+              WhatsApp Live Orders
             </span>
           </div>
         </div>

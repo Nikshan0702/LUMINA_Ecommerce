@@ -27,7 +27,7 @@ import AdminOrders from './pages/admin/AdminOrders';
 
 // Layout wrapper for customer-facing views
 const CustomerLayout = ({ children }) => (
-  <div className="min-h-screen flex flex-col bg-slate-50">
+  <div className="min-h-screen flex flex-col bg-[#FAF9FD]">
     <Navbar />
     <main className="flex-1">{children}</main>
     <Footer />

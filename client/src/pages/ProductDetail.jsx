@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { ShoppingBag, ArrowLeft, Check, ShieldCheck, Truck, Sparkles, AlertCircle } from 'lucide-react';
+import { ShoppingBag, ArrowLeft, Check, ShieldCheck, Truck, Star, Sparkles, AlertCircle } from 'lucide-react';
 import api from '../services/api';
 import { useCart } from '../context/CartContext';
 import { formatPrice } from '../utils/formatters';
@@ -32,20 +32,20 @@ const ProductDetail = () => {
   if (loading) {
     return (
       <div className="min-h-[60vh] flex items-center justify-center">
-        <div className="w-8 h-8 border-4 border-emerald-600 border-t-transparent rounded-full animate-spin"></div>
+        <div className="w-8 h-8 border-4 border-[#9B6DE3] border-t-transparent rounded-full animate-spin"></div>
       </div>
     );
   }
 
   if (error || !product) {
     return (
-      <div className="max-w-xl mx-auto my-20 p-8 text-center bg-white rounded-2xl border border-slate-200">
-        <AlertCircle className="w-10 h-10 text-rose-500 mx-auto mb-3" />
-        <h2 className="text-xl font-bold text-slate-800 mb-2">Item Unavailable</h2>
-        <p className="text-sm text-slate-600 mb-6">{error || 'Could not locate this product.'}</p>
+      <div className="max-w-xl mx-auto my-20 p-10 text-center bg-white rounded-3xl border border-[#E8E3EF] shadow-card">
+        <AlertCircle className="w-10 h-10 text-[#E11D48] mx-auto mb-3" />
+        <h2 className="text-2xl font-serif font-bold text-[#171719] mb-2">Item Unavailable</h2>
+        <p className="text-xs text-[#6B6870] mb-6">{error || 'Could not locate this product.'}</p>
         <Link
           to="/products"
-          className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-slate-900 text-white text-xs font-semibold hover:bg-slate-800"
+          className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#9B6DE3] text-white text-xs font-semibold hover:bg-[#834FD4] transition-colors shadow-soft"
         >
           <ArrowLeft className="w-4 h-4" /> Return to Catalog
         </Link>
@@ -77,18 +77,18 @@ const ProductDetail = () => {
   };
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-8">
       {/* Back button */}
       <Link
         to="/products"
-        className="inline-flex items-center gap-2 text-xs font-semibold text-slate-600 hover:text-emerald-700 transition-colors mb-8"
+        className="inline-flex items-center gap-2 text-xs font-semibold text-[#6B6870] hover:text-[#171719] transition-colors"
       >
-        <ArrowLeft className="w-4 h-4" /> Back to Products
+        <ArrowLeft className="w-4 h-4" /> Back to All Products
       </Link>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start bg-white p-6 sm:p-10 rounded-2xl border border-slate-200 shadow-sm">
-        {/* Product Image Section */}
-        <div className="relative rounded-xl overflow-hidden aspect-square bg-slate-100 border border-slate-100">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start bg-white p-6 sm:p-12 rounded-3xl border border-[#E8E3EF] shadow-card">
+        {/* Product Image Showcase */}
+        <div className="relative rounded-3xl overflow-hidden aspect-square bg-[#FAF9FD] border border-[#E8E3EF]">
           <img
             src={product.image}
             alt={product.name}
@@ -97,8 +97,8 @@ const ProductDetail = () => {
               e.target.src = 'https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?auto=format&fit=crop&w=600&q=80';
             }}
           />
-          <div className="absolute top-4 left-4">
-            <span className="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-slate-900/80 backdrop-blur-md text-white shadow-sm">
+          <div className="absolute top-5 left-5">
+            <span className="px-3.5 py-1.5 rounded-full text-[11px] font-bold uppercase tracking-wider bg-white/95 backdrop-blur-md text-[#171719] shadow-sm border border-[#E8E3EF]">
               {product.category}
             </span>
           </div>
@@ -108,63 +108,73 @@ const ProductDetail = () => {
         <div className="space-y-6">
           <div>
             <div className="flex items-center justify-between gap-4">
-              <span className="text-xs font-bold uppercase tracking-widest text-emerald-700">
+              <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#834FD4]">
                 {product.brand}
               </span>
               {isOutOfStock ? (
-                <span className="px-3 py-1 text-xs font-bold rounded-full bg-rose-100 text-rose-700 border border-rose-200">
-                  Out of Stock
+                <span className="px-3 py-1 text-[11px] font-bold rounded-full bg-rose-50 text-[#E11D48] border border-rose-200">
+                  OUT OF STOCK
                 </span>
               ) : (
-                <span className="px-3 py-1 text-xs font-semibold rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200">
-                  In Stock ({product.stock} units left)
+                <span className="px-3 py-1 text-[11px] font-semibold rounded-full bg-[#EDE5F8] text-[#834FD4] border border-[#DFCFF4]">
+                  In Stock ({product.stock} units available)
                 </span>
               )}
             </div>
 
-            <h1 className="text-2xl sm:text-3xl font-serif font-bold text-slate-900 mt-2 leading-tight">
+            <h1 className="text-3xl sm:text-4xl font-serif font-bold text-[#171719] mt-2 leading-tight">
               {product.name}
             </h1>
+
+            {/* Rating */}
+            <div className="flex items-center gap-1.5 mt-2.5">
+              <div className="flex items-center text-amber-400">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} className="w-4 h-4 fill-current" />
+                ))}
+              </div>
+              <span className="text-xs text-[#6B6870] font-medium ml-1">5.0 (48 customer reviews)</span>
+            </div>
           </div>
 
           {/* Price */}
-          <div className="border-y border-slate-100 py-4 flex items-baseline gap-3">
-            <span className="text-3xl font-bold text-slate-900">
+          <div className="border-y border-[#F6F1FB] py-4 flex items-baseline gap-3">
+            <span className="text-3xl font-bold text-[#171719]">
               {formatPrice(product.price)}
             </span>
-            <span className="text-xs text-slate-500">Including taxes</span>
+            <span className="text-xs text-[#6B6870]">Taxes included • Island-wide delivery Rs. 500</span>
           </div>
 
           {/* Description */}
           <div className="space-y-2">
-            <h3 className="text-xs font-bold uppercase tracking-wider text-slate-700">
-              Description & Highlights
+            <h3 className="text-xs font-bold uppercase tracking-wider text-[#171719]">
+              Formulation & Benefits
             </h3>
-            <p className="text-sm text-slate-600 leading-relaxed">
+            <p className="text-sm text-[#6B6870] leading-relaxed">
               {product.description}
             </p>
           </div>
 
-          {/* Quantity and Add to Cart Form */}
+          {/* Quantity Controls & Add to Cart */}
           <div className="space-y-4 pt-2">
             {!isOutOfStock ? (
               <div className="flex items-center gap-4">
-                <span className="text-xs font-semibold text-slate-700">Quantity:</span>
-                <div className="flex items-center border border-slate-300 rounded-lg overflow-hidden bg-slate-50">
+                <span className="text-xs font-semibold text-[#171719]">Quantity:</span>
+                <div className="flex items-center border border-[#E8E3EF] rounded-full overflow-hidden bg-[#FAF9FD]">
                   <button
                     onClick={handleQuantityDecrease}
                     disabled={quantity <= 1}
-                    className="px-3 py-2 text-slate-600 hover:bg-slate-200 disabled:opacity-50 text-sm font-bold"
+                    className="px-4 py-2 text-[#6B6870] hover:text-[#171719] hover:bg-[#EDE5F8] disabled:opacity-40 text-sm font-bold transition-colors"
                   >
                     -
                   </button>
-                  <span className="px-4 py-2 text-sm font-semibold text-slate-900 bg-white">
+                  <span className="px-4 py-2 text-sm font-semibold text-[#171719] bg-white min-w-[36px] text-center">
                     {quantity}
                   </span>
                   <button
                     onClick={handleQuantityIncrease}
                     disabled={quantity >= product.stock}
-                    className="px-3 py-2 text-slate-600 hover:bg-slate-200 disabled:opacity-50 text-sm font-bold"
+                    className="px-4 py-2 text-[#6B6870] hover:text-[#171719] hover:bg-[#EDE5F8] disabled:opacity-40 text-sm font-bold transition-colors"
                   >
                     +
                   </button>
@@ -176,42 +186,46 @@ const ProductDetail = () => {
               <button
                 onClick={handleAddToCart}
                 disabled={isOutOfStock}
-                className={`flex-1 py-3.5 px-6 rounded-xl text-sm font-bold flex items-center justify-center gap-2 shadow-sm transition-all ${
+                className={`flex-1 py-4 px-8 rounded-full text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 shadow-soft transition-all duration-200 ${
                   isOutOfStock
                     ? 'bg-slate-200 text-slate-400 cursor-not-allowed'
-                    : 'bg-emerald-700 hover:bg-emerald-800 text-white'
+                    : 'bg-[#9B6DE3] hover:bg-[#834FD4] text-white'
                 }`}
               >
                 <ShoppingBag className="w-4 h-4" />
-                {isOutOfStock ? 'Currently Out of Stock' : 'Add to Shopping Cart'}
+                {isOutOfStock ? 'OUT OF STOCK' : 'ADD TO BAG'}
               </button>
 
               <Link
                 to="/cart"
-                className="py-3.5 px-6 rounded-xl text-sm font-semibold border border-slate-300 bg-white hover:bg-slate-50 text-slate-800 flex items-center justify-center"
+                className="py-4 px-8 rounded-full text-xs font-bold uppercase tracking-wider border border-[#E8E3EF] bg-white hover:bg-[#FAF9FD] text-[#171719] flex items-center justify-center transition-colors"
               >
-                View Cart
+                View Bag
               </Link>
             </div>
 
             {/* Added Feedback Toast */}
             {addedNotice && (
-              <div className="p-3 bg-emerald-50 border border-emerald-200 rounded-xl text-emerald-800 text-xs font-medium flex items-center gap-2">
-                <Check className="w-4 h-4 text-emerald-600 shrink-0" />
-                Added {quantity} unit(s) of {product.name} to your cart!
+              <div className="p-3.5 bg-[#EDE5F8] border border-[#DFCFF4] rounded-2xl text-[#834FD4] text-xs font-medium flex items-center gap-2 animate-in fade-in">
+                <Check className="w-4 h-4 text-[#834FD4] shrink-0" />
+                Added {quantity} unit(s) of {product.name} to your shopping bag!
               </div>
             )}
           </div>
 
-          {/* Guarantees */}
-          <div className="grid grid-cols-2 gap-4 pt-6 border-t border-slate-100 text-xs text-slate-600">
-            <div className="flex items-center gap-2">
-              <ShieldCheck className="w-4 h-4 text-emerald-600" />
-              <span>PayHere Sandbox Supported</span>
+          {/* Trust Highlights */}
+          <div className="pt-6 border-t border-[#F6F1FB] space-y-2.5 text-xs text-[#6B6870]">
+            <div className="flex items-center gap-2.5">
+              <Check className="w-4 h-4 text-[#834FD4] shrink-0" />
+              <span>PayHere secure sandbox payment gateway</span>
             </div>
-            <div className="flex items-center gap-2">
-              <Truck className="w-4 h-4 text-emerald-600" />
-              <span>Island-wide Delivery Rs. 500</span>
+            <div className="flex items-center gap-2.5">
+              <Check className="w-4 h-4 text-[#834FD4] shrink-0" />
+              <span>Island-wide courier delivery in 2-3 business days</span>
+            </div>
+            <div className="flex items-center gap-2.5">
+              <Check className="w-4 h-4 text-[#834FD4] shrink-0" />
+              <span>100% authentic, cruelty-free botanical formulation</span>
             </div>
           </div>
         </div>

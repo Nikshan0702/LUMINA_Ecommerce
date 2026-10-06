@@ -20,16 +20,18 @@ const AdminNavbar = () => {
   ];
 
   return (
-    <div className="bg-slate-900 text-slate-200 border-b border-slate-800">
+    <div className="bg-[#0F172A] text-slate-200 border-b border-slate-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-14">
+        <div className="flex items-center justify-between h-16">
           <div className="flex items-center gap-6">
             <div className="flex items-center gap-2 text-white font-bold text-sm">
-              <ShieldCheck className="w-4 h-4 text-emerald-400" />
-              <span>Admin Management</span>
+              <div className="w-8 h-8 rounded-xl bg-amber-500/20 border border-amber-500/30 flex items-center justify-center text-amber-400">
+                <ShieldCheck className="w-4 h-4" />
+              </div>
+              <span className="tracking-tight font-serif">Lumina Admin</span>
             </div>
 
-            <nav className="flex items-center gap-2">
+            <nav className="flex items-center gap-1.5">
               {navLinks.map((link) => {
                 const Icon = link.icon;
                 const active = location.pathname === link.path;
@@ -37,9 +39,9 @@ const AdminNavbar = () => {
                   <Link
                     key={link.name}
                     to={link.path}
-                    className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition-colors ${
+                    className={`flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-semibold transition-colors ${
                       active
-                        ? 'bg-emerald-600 text-white'
+                        ? 'bg-[#9B6DE3] text-white shadow-soft'
                         : 'text-slate-300 hover:bg-slate-800 hover:text-white'
                     }`}
                   >
@@ -54,13 +56,13 @@ const AdminNavbar = () => {
           <div className="flex items-center gap-3">
             <Link
               to="/"
-              className="text-xs text-slate-400 hover:text-white flex items-center gap-1 px-2.5 py-1 rounded-md hover:bg-slate-800 transition-colors"
+              className="text-xs text-slate-400 hover:text-white flex items-center gap-1.5 px-3 py-1.5 rounded-lg hover:bg-slate-800 transition-colors"
             >
               <ArrowLeft className="w-3.5 h-3.5" /> Back to Store
             </Link>
             <button
               onClick={handleLogout}
-              className="text-xs text-rose-400 hover:text-rose-300 flex items-center gap-1 px-2.5 py-1 rounded-md hover:bg-slate-800 transition-colors"
+              className="text-xs text-[#E11D48] hover:text-rose-300 flex items-center gap-1.5 px-3 py-1.5 rounded-lg hover:bg-slate-800 transition-colors font-medium"
             >
               <LogOut className="w-3.5 h-3.5" /> Sign Out
             </button>

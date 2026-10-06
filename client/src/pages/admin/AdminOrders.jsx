@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Eye, CheckCircle2, Clock, Truck, XCircle, Search, MessageCircle, CreditCard, ChevronDown } from 'lucide-react';
+import { Eye, Search, MessageCircle, CreditCard, ChevronDown, CheckCircle2, Clock } from 'lucide-react';
 import AdminNavbar from '../../components/AdminNavbar';
 import api from '../../services/api';
 import { formatPrice, formatDate } from '../../utils/formatters';
@@ -55,24 +55,29 @@ const AdminOrders = () => {
   });
 
   return (
-    <div className="min-h-screen bg-slate-50">
+    <div className="min-h-screen bg-[#FAF9FD]">
       <AdminNavbar />
 
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-6">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div>
-            <h1 className="text-2xl font-bold text-slate-900">Order Management</h1>
-            <p className="text-xs text-slate-500 mt-1">
+            <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#834FD4] block">
+              DISPATCH & FULFILLMENT
+            </span>
+            <h1 className="text-2xl sm:text-3xl font-serif font-bold text-[#171719] mt-1">
+              Customer Order Management
+            </h1>
+            <p className="text-xs text-[#6B6870] mt-1">
               Process customer shipments, verify payment statuses, and fulfill cosmetics orders
             </p>
           </div>
 
           <div className="flex items-center gap-2 text-xs">
-            <span className="font-semibold text-slate-600">Filter Status:</span>
+            <span className="font-semibold text-[#6B6870]">Filter Status:</span>
             <select
               value={statusFilter}
               onChange={(e) => setStatusFilter(e.target.value)}
-              className="bg-white border border-slate-300 rounded-lg px-3 py-1.5 font-medium text-slate-700 focus:outline-none focus:ring-2 focus:ring-emerald-600"
+              className="bg-white border border-[#E8E3EF] rounded-full px-4 py-2 font-medium text-[#171719] focus:outline-none focus:ring-2 focus:ring-[#9B6DE3] shadow-card cursor-pointer"
             >
               <option value="All">All Statuses</option>
               {orderStatusOptions.map((st) => (
@@ -85,64 +90,64 @@ const AdminOrders = () => {
         </div>
 
         {/* Orders Table */}
-        <div className="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+        <div className="bg-white rounded-2xl border border-[#E8E3EF] shadow-card overflow-hidden">
           <div className="overflow-x-auto">
             <table className="w-full text-left text-xs">
-              <thead className="bg-slate-50 text-slate-600 uppercase font-semibold border-b border-slate-200">
+              <thead className="bg-[#FAF9FD] text-[#6B6870] uppercase font-semibold border-b border-[#E8E3EF]">
                 <tr>
-                  <th className="px-5 py-3.5">Order ID</th>
-                  <th className="px-5 py-3.5">Customer & Phone</th>
-                  <th className="px-5 py-3.5">Items</th>
-                  <th className="px-5 py-3.5">Total</th>
-                  <th className="px-5 py-3.5">Method</th>
-                  <th className="px-5 py-3.5">Payment</th>
-                  <th className="px-5 py-3.5">Fulfillment Status</th>
-                  <th className="px-5 py-3.5 text-right">View</th>
+                  <th className="px-6 py-4">Order ID</th>
+                  <th className="px-6 py-4">Customer Details</th>
+                  <th className="px-6 py-4">Items Count</th>
+                  <th className="px-6 py-4">Total Amount</th>
+                  <th className="px-6 py-4">Channel</th>
+                  <th className="px-6 py-4">Payment State</th>
+                  <th className="px-6 py-4">Fulfillment Status</th>
+                  <th className="px-6 py-4 text-right">Details</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-slate-100">
+              <tbody className="divide-y divide-[#F6F1FB]">
                 {loading ? (
                   <tr>
-                    <td colSpan="8" className="px-5 py-8 text-center text-slate-400">
-                      Loading orders...
+                    <td colSpan="8" className="px-6 py-8 text-center text-[#6B6870]">
+                      Loading customer orders...
                     </td>
                   </tr>
                 ) : filteredOrders.length > 0 ? (
                   filteredOrders.map((order) => (
-                    <tr key={order._id} className="hover:bg-slate-50/50">
-                      <td className="px-5 py-3.5 font-mono font-bold text-slate-800">
+                    <tr key={order._id} className="hover:bg-[#FAF9FD]/60 transition-colors">
+                      <td className="px-6 py-4 font-mono font-bold text-[#171719]">
                         {order._id.slice(-6)}
                       </td>
-                      <td className="px-5 py-3.5">
-                        <div className="font-semibold text-slate-900">{order.customerName}</div>
-                        <div className="text-[11px] text-slate-500">{order.phone}</div>
+                      <td className="px-6 py-4">
+                        <div className="font-semibold text-[#171719]">{order.customerName}</div>
+                        <div className="text-[11px] text-[#6B6870]">{order.phone}</div>
                       </td>
-                      <td className="px-5 py-3.5 text-slate-700">
+                      <td className="px-6 py-4 text-[#171719]">
                         {order.items.reduce((s, i) => s + i.quantity, 0)} items
                       </td>
-                      <td className="px-5 py-3.5 font-bold text-slate-900">
+                      <td className="px-6 py-4 font-bold text-[#171719]">
                         {formatPrice(order.total)}
                       </td>
-                      <td className="px-5 py-3.5">
-                        <span className="inline-flex items-center gap-1 text-[11px] font-semibold text-slate-700">
+                      <td className="px-6 py-4">
+                        <span className="inline-flex items-center gap-1.5 text-[11px] font-semibold text-[#171719]">
                           {order.paymentMethod === 'WhatsApp' ? (
-                            <MessageCircle className="w-3 h-3 text-emerald-600" />
+                            <MessageCircle className="w-3.5 h-3.5 text-[#834FD4]" />
                           ) : (
-                            <CreditCard className="w-3 h-3 text-slate-700" />
+                            <CreditCard className="w-3.5 h-3.5 text-[#834FD4]" />
                           )}
                           {order.paymentMethod}
                         </span>
                       </td>
-                      <td className="px-5 py-3.5">
+                      <td className="px-6 py-4">
                         <select
                           value={order.paymentStatus}
                           onChange={(e) =>
                             handleUpdateStatus(order._id, null, e.target.value)
                           }
-                          className={`text-[11px] font-bold px-2 py-1 rounded-md border focus:outline-none ${
+                          className={`text-[11px] font-bold px-3 py-1.5 rounded-full border focus:outline-none cursor-pointer ${
                             order.paymentStatus === 'Paid'
-                              ? 'bg-emerald-50 text-emerald-800 border-emerald-200'
-                              : 'bg-amber-50 text-amber-800 border-amber-200'
+                              ? 'bg-[#EBF3EC] text-[#50805C] border-[#D1E6D4]'
+                              : 'bg-[#FBEFE6] text-[#B86B3E] border-[#F5DAC7]'
                           }`}
                         >
                           {paymentStatusOptions.map((ps) => (
@@ -152,13 +157,13 @@ const AdminOrders = () => {
                           ))}
                         </select>
                       </td>
-                      <td className="px-5 py-3.5">
+                      <td className="px-6 py-4">
                         <select
                           value={order.orderStatus}
                           onChange={(e) =>
                             handleUpdateStatus(order._id, e.target.value, null)
                           }
-                          className="text-[11px] font-semibold px-2.5 py-1 rounded-md bg-slate-50 border border-slate-300 text-slate-800 focus:outline-none focus:ring-1 focus:ring-emerald-600"
+                          className="text-[11px] font-semibold px-3 py-1.5 rounded-full bg-[#FAF9FD] border border-[#E8E3EF] text-[#171719] focus:outline-none focus:ring-1 focus:ring-[#9B6DE3] cursor-pointer"
                         >
                           {orderStatusOptions.map((st) => (
                             <option key={st} value={st}>
@@ -167,10 +172,10 @@ const AdminOrders = () => {
                           ))}
                         </select>
                       </td>
-                      <td className="px-5 py-3.5 text-right">
+                      <td className="px-6 py-4 text-right">
                         <button
                           onClick={() => setSelectedOrder(order)}
-                          className="p-1.5 text-slate-500 hover:text-emerald-700 hover:bg-slate-100 rounded-lg"
+                          className="p-2 text-[#6B6870] hover:text-[#834FD4] hover:bg-[#EDE5F8] rounded-xl transition-colors"
                           title="View order details"
                         >
                           <Eye className="w-4 h-4" />
@@ -180,7 +185,7 @@ const AdminOrders = () => {
                   ))
                 ) : (
                   <tr>
-                    <td colSpan="8" className="px-5 py-8 text-center text-slate-400">
+                    <td colSpan="8" className="px-6 py-8 text-center text-[#6B6870]">
                       No orders matching criteria.
                     </td>
                   </tr>
@@ -194,51 +199,51 @@ const AdminOrders = () => {
       {/* Order Details Modal */}
       {selectedOrder && (
         <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
-          <div className="bg-white rounded-2xl max-w-lg w-full p-6 space-y-4 shadow-2xl border border-slate-100 max-h-[90vh] overflow-y-auto text-xs">
-            <div className="flex items-center justify-between border-b border-slate-100 pb-3">
+          <div className="bg-white rounded-3xl max-w-lg w-full p-8 space-y-5 shadow-soft border border-[#E8E3EF] max-h-[90vh] overflow-y-auto text-xs">
+            <div className="flex items-center justify-between border-b border-[#F6F1FB] pb-4">
               <div>
-                <h3 className="font-bold text-slate-900 text-sm">
+                <h3 className="font-serif font-bold text-[#171719] text-base">
                   Order Details: {selectedOrder._id}
                 </h3>
-                <span className="text-slate-500 text-[11px]">
+                <span className="text-[#6B6870] text-[11px]">
                   Placed on {formatDate(selectedOrder.createdAt)}
                 </span>
               </div>
               <button
                 onClick={() => setSelectedOrder(null)}
-                className="text-slate-400 hover:text-slate-600 text-lg font-bold"
+                className="text-[#6B6870] hover:text-[#171719] text-lg font-bold"
               >
                 ✕
               </button>
             </div>
 
-            <div className="bg-slate-50 p-3.5 rounded-xl space-y-1.5">
+            <div className="bg-[#FAF9FD] p-4 rounded-2xl space-y-2 border border-[#E8E3EF]">
               <p>
-                <strong>Customer:</strong> {selectedOrder.customerName}
+                <strong className="text-[#171719]">Customer:</strong> {selectedOrder.customerName}
               </p>
               <p>
-                <strong>Phone:</strong> {selectedOrder.phone}
+                <strong className="text-[#171719]">Phone:</strong> {selectedOrder.phone}
               </p>
               <p>
-                <strong>Delivery Address:</strong> {selectedOrder.shippingAddress}
+                <strong className="text-[#171719]">Delivery Address:</strong> {selectedOrder.shippingAddress}
               </p>
               <p>
-                <strong>Payment:</strong> {selectedOrder.paymentMethod} ({selectedOrder.paymentStatus})
+                <strong className="text-[#171719]">Payment:</strong> {selectedOrder.paymentMethod} ({selectedOrder.paymentStatus})
               </p>
             </div>
 
             <div>
-              <h4 className="font-bold text-slate-800 mb-2">Order Items:</h4>
-              <div className="divide-y divide-slate-100 border border-slate-100 rounded-xl overflow-hidden">
+              <h4 className="font-serif font-bold text-[#171719] mb-2.5">Purchased Cosmetics:</h4>
+              <div className="divide-y divide-[#F6F1FB] border border-[#E8E3EF] rounded-2xl overflow-hidden">
                 {selectedOrder.items.map((item, idx) => (
-                  <div key={idx} className="p-3 flex items-center justify-between">
+                  <div key={idx} className="p-3.5 flex items-center justify-between">
                     <div>
-                      <p className="font-semibold text-slate-800">{item.name}</p>
-                      <p className="text-slate-500 text-[11px]">
+                      <p className="font-serif font-bold text-[#171719]">{item.name}</p>
+                      <p className="text-[#6B6870] text-[11px]">
                         {formatPrice(item.price)} × {item.quantity}
                       </p>
                     </div>
-                    <span className="font-bold text-slate-900">
+                    <span className="font-bold text-[#171719]">
                       {formatPrice(item.price * item.quantity)}
                     </span>
                   </div>
@@ -246,15 +251,15 @@ const AdminOrders = () => {
               </div>
             </div>
 
-            <div className="border-t border-slate-100 pt-3 flex justify-between font-bold text-sm text-slate-900">
-              <span>Total (incl. delivery)</span>
-              <span className="text-emerald-800">{formatPrice(selectedOrder.total)}</span>
+            <div className="border-t border-[#F6F1FB] pt-3 flex justify-between font-bold text-sm text-[#171719]">
+              <span>Total (incl. Rs. 500 delivery)</span>
+              <span className="text-[#834FD4]">{formatPrice(selectedOrder.total)}</span>
             </div>
 
             <div className="flex justify-end pt-2">
               <button
                 onClick={() => setSelectedOrder(null)}
-                className="px-4 py-2 bg-slate-900 text-white font-semibold rounded-lg hover:bg-slate-800"
+                className="px-6 py-2.5 bg-[#171719] text-white font-semibold rounded-full hover:bg-slate-800 transition-colors"
               >
                 Close
               </button>
