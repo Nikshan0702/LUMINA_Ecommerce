@@ -3,9 +3,6 @@ const Order = require('../models/Order');
 const Product = require('../models/Product');
 const { generatePayHereHash } = require('../utils/payhere');
 
-// @desc    Create new order
-// @route   POST /api/orders
-// @access  Private (Customer or Admin)
 const createOrder = async (req, res) => {
   try {
     const { items, customerName, phone, shippingAddress, paymentMethod } = req.body;
@@ -22,10 +19,10 @@ const createOrder = async (req, res) => {
       return res.status(400).json({ message: 'Invalid payment method' });
     }
 
-    // Verify stock and fetch verified prices from database
     let subtotal = 0;
     const verifiedItems = [];
 
+    // Verify stock availability and compute subtotal using stored database prices
     for (const item of items) {
       const product = await Product.findById(item.product);
 
@@ -49,10 +46,10 @@ const createOrder = async (req, res) => {
       });
     }
 
-    const deliveryFee = 500; // Flat 500 LKR delivery fee
+    const deliveryFee = 500;
     const total = subtotal + deliveryFee;
 
-    // Deduct stock for each product
+    // Deduct stock for each confirmed product item
     for (const item of verifiedItems) {
       await Product.findByIdAndUpdate(item.product, {
         $inc: { stock: -item.quantity }
@@ -79,9 +76,6 @@ const createOrder = async (req, res) => {
   }
 };
 
-// @desc    Get logged in user orders
-// @route   GET /api/orders/my-orders
-// @access  Private
 const getMyOrders = async (req, res) => {
   try {
     const orders = await Order.find({ user: req.user._id }).sort({ createdAt: -1 });
@@ -91,9 +85,6 @@ const getMyOrders = async (req, res) => {
   }
 };
 
-// @desc    Get order by ID
-// @route   GET /api/orders/:id
-// @access  Private
 const getOrderById = async (req, res) => {
   try {
     const { id } = req.params;
@@ -108,7 +99,6 @@ const getOrderById = async (req, res) => {
       return res.status(404).json({ message: 'Order not found' });
     }
 
-    // Only owner or admin can view order
     if (order.user._id.toString() !== req.user._id.toString() && req.user.role !== 'admin') {
       return res.status(403).json({ message: 'Not authorized to view this order' });
     }
@@ -119,9 +109,6 @@ const getOrderById = async (req, res) => {
   }
 };
 
-// @desc    Get PayHere Sandbox payment parameters & hash
-// @route   GET /api/orders/:id/payhere-params
-// @access  Private
 const getPayHereParams = async (req, res) => {
   try {
     const { id } = req.params;
@@ -173,9 +160,6 @@ const getPayHereParams = async (req, res) => {
   }
 };
 
-// @desc    Mark order payment status as paid (after PayHere confirmation)
-// @route   POST /api/orders/:id/pay
-// @access  Private
 const markOrderAsPaid = async (req, res) => {
   try {
     const { id } = req.params;
@@ -207,9 +191,6 @@ const markOrderAsPaid = async (req, res) => {
   }
 };
 
-// @desc    PayHere IPN webhook handler
-// @route   POST /api/orders/payhere-notify
-// @access  Public
 const payhereNotify = async (req, res) => {
   try {
     const { order_id, status_code } = req.body;
@@ -217,7 +198,6 @@ const payhereNotify = async (req, res) => {
     if (order_id && mongoose.Types.ObjectId.isValid(order_id)) {
       const order = await Order.findById(order_id);
       if (order) {
-        // Status 2 is Success in PayHere
         if (status_code == '2') {
           order.paymentStatus = 'Paid';
           order.orderStatus = 'Confirmed';
@@ -234,9 +214,6 @@ const payhereNotify = async (req, res) => {
   }
 };
 
-// @desc    Get all orders for admin
-// @route   GET /api/admin/orders
-// @access  Private/Admin
 const getAllOrders = async (req, res) => {
   try {
     const orders = await Order.find()
@@ -248,9 +225,6 @@ const getAllOrders = async (req, res) => {
   }
 };
 
-// @desc    Update order status
-// @route   PUT /api/admin/orders/:id/status
-// @access  Private/Admin
 const updateOrderStatus = async (req, res) => {
   try {
     const { id } = req.params;
@@ -275,7 +249,7 @@ const updateOrderStatus = async (req, res) => {
     if (orderStatus) order.orderStatus = orderStatus;
     if (paymentStatus) order.paymentStatus = paymentStatus;
 
-    // If order is cancelled by admin, restore stock!
+    // Automatically restore stock if an order is cancelled
     if (orderStatus === 'Cancelled') {
       for (const item of order.items) {
         await Product.findByIdAndUpdate(item.product, {
@@ -291,16 +265,12 @@ const updateOrderStatus = async (req, res) => {
   }
 };
 
-// @desc    Get admin dashboard metrics
-// @route   GET /api/admin/dashboard
-// @access  Private/Admin
 const getDashboardStats = async (req, res) => {
   try {
     const totalProducts = await Product.countDocuments();
     const totalOrders = await Order.countDocuments();
     const pendingOrders = await Order.countDocuments({ orderStatus: 'Pending' });
 
-    // Calculate revenue from paid orders
     const paidOrders = await Order.find({ paymentStatus: 'Paid' });
     const totalRevenue = paidOrders.reduce((sum, order) => sum + order.total, 0);
 

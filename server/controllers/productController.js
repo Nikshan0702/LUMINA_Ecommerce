@@ -1,9 +1,6 @@
 const mongoose = require('mongoose');
 const Product = require('../models/Product');
 
-// @desc    Get all active products with search, category filter, and sorting
-// @route   GET /api/products
-// @access  Public
 const getProducts = async (req, res) => {
   try {
     const { search, category, sort } = req.query;
@@ -37,9 +34,6 @@ const getProducts = async (req, res) => {
   }
 };
 
-// @desc    Get all products (including inactive) for admin
-// @route   GET /api/products/admin/all
-// @access  Private/Admin
 const getAdminProducts = async (req, res) => {
   try {
     const products = await Product.find().sort({ createdAt: -1 });
@@ -49,9 +43,6 @@ const getAdminProducts = async (req, res) => {
   }
 };
 
-// @desc    Get single product by ID
-// @route   GET /api/products/:id
-// @access  Public
 const getProductById = async (req, res) => {
   try {
     const { id } = req.params;
@@ -72,9 +63,6 @@ const getProductById = async (req, res) => {
   }
 };
 
-// @desc    Create a product
-// @route   POST /api/products
-// @access  Private/Admin
 const createProduct = async (req, res) => {
   try {
     const { name, description, category, brand, price, image, stock } = req.body;
@@ -104,9 +92,6 @@ const createProduct = async (req, res) => {
   }
 };
 
-// @desc    Update a product
-// @route   PUT /api/products/:id
-// @access  Private/Admin
 const updateProduct = async (req, res) => {
   try {
     const { id } = req.params;
@@ -147,9 +132,6 @@ const updateProduct = async (req, res) => {
   }
 };
 
-// @desc    Delete or deactivate a product
-// @route   DELETE /api/products/:id
-// @access  Private/Admin
 const deleteProduct = async (req, res) => {
   try {
     const { id } = req.params;
@@ -164,7 +146,6 @@ const deleteProduct = async (req, res) => {
       return res.status(404).json({ message: 'Product not found' });
     }
 
-    // Toggle active status or remove: deleting permanently or soft-deleting
     await Product.findByIdAndDelete(id);
     res.json({ message: 'Product removed successfully' });
   } catch (error) {
