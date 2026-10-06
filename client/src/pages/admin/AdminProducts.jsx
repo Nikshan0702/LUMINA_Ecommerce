@@ -132,7 +132,7 @@ const AdminProducts = () => {
             <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#834FD4] block">
               INVENTORY MANAGEMENT
             </span>
-            <h1 className="text-2xl sm:text-3xl font-serif font-bold text-[#171719] mt-1">
+            <h1 className="text-2xl sm:text-3xl font-bold text-[#171719] mt-1">
               Cosmetics Catalog & Stock
             </h1>
             <p className="text-xs text-[#6B6870] mt-1">
@@ -202,7 +202,7 @@ const AdminProducts = () => {
                             <span className="text-[10px] uppercase font-bold tracking-wider text-[#834FD4] block">
                               {p.brand}
                             </span>
-                            <span className="font-serif font-bold text-sm text-[#171719] line-clamp-1">{p.name}</span>
+                            <span className="font-bold text-sm text-[#171719] line-clamp-1">{p.name}</span>
                           </div>
                         </div>
                       </td>
@@ -270,7 +270,7 @@ const AdminProducts = () => {
         <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
           <div className="bg-white rounded-3xl max-w-xl w-full p-8 space-y-5 shadow-soft border border-[#E8E3EF] max-h-[90vh] overflow-y-auto">
             <div className="flex items-center justify-between border-b border-[#F6F1FB] pb-4">
-              <h3 className="font-serif font-bold text-[#171719] text-lg">
+              <h3 className="font-bold text-[#171719] text-lg">
                 {editingProduct ? 'Edit Cosmetics Formulation' : 'Add New Formulation'}
               </h3>
               <button

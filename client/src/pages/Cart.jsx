@@ -14,7 +14,7 @@ const Cart = () => {
         <div className="w-20 h-20 bg-[#EDE5F8] rounded-full flex items-center justify-center mx-auto text-[#834FD4]">
           <ShoppingBag className="w-10 h-10" />
         </div>
-        <h1 className="text-3xl font-serif font-bold text-[#171719]">
+        <h1 className="text-3xl font-bold text-[#171719]">
           Your bag is waiting for you.
         </h1>
         <p className="text-xs text-[#6B6870] max-w-sm mx-auto leading-relaxed">
@@ -38,7 +38,7 @@ const Cart = () => {
           <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#834FD4]">
             SHOPPING BAG
           </span>
-          <h1 className="text-3xl sm:text-4xl font-serif font-bold text-[#171719] mt-1">
+          <h1 className="text-3xl sm:text-4xl font-bold text-[#171719] mt-1">
             YOUR BAG
           </h1>
         </div>
@@ -70,7 +70,7 @@ const Cart = () => {
                   </span>
                   <Link
                     to={`/products/${item.product}`}
-                    className="block text-sm font-serif font-bold text-[#171719] hover:text-[#834FD4] transition-colors line-clamp-1"
+                    className="block text-sm font-bold text-[#171719] hover:text-[#834FD4] transition-colors line-clamp-1"
                   >
                     {item.name}
                   </Link>
@@ -131,7 +131,7 @@ const Cart = () => {
 
         {/* Order Summary Card */}
         <div className="bg-white p-7 rounded-3xl border border-[#E8E3EF] shadow-card space-y-6">
-          <h2 className="text-lg font-serif font-bold text-[#171719] border-b border-[#F6F1FB] pb-3">
+          <h2 className="text-lg font-bold text-[#171719] border-b border-[#F6F1FB] pb-3">
             Order Summary
           </h2>
 

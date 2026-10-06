@@ -41,7 +41,7 @@ const ProductDetail = () => {
     return (
       <div className="max-w-xl mx-auto my-20 p-10 text-center bg-white rounded-3xl border border-[#E8E3EF] shadow-card">
         <AlertCircle className="w-10 h-10 text-[#E11D48] mx-auto mb-3" />
-        <h2 className="text-2xl font-serif font-bold text-[#171719] mb-2">Item Unavailable</h2>
+        <h2 className="text-2xl font-bold text-[#171719] mb-2">Item Unavailable</h2>
         <p className="text-xs text-[#6B6870] mb-6">{error || 'Could not locate this product.'}</p>
         <Link
           to="/products"
@@ -122,7 +122,7 @@ const ProductDetail = () => {
               )}
             </div>
 
-            <h1 className="text-3xl sm:text-4xl font-serif font-bold text-[#171719] mt-2 leading-tight">
+            <h1 className="text-3xl sm:text-4xl font-bold text-[#171719] mt-2 leading-tight">
               {product.name}
             </h1>
 

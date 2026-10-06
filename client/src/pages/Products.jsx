@@ -88,7 +88,7 @@ const Products = () => {
           <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#834FD4]">
             SHOP ALL
           </span>
-          <h1 className="text-3xl sm:text-5xl font-serif font-bold text-[#171719] mt-1">
+          <h1 className="text-3xl sm:text-5xl font-bold text-[#171719] mt-1">
             Discover Your Everyday Essentials
           </h1>
           <p className="text-sm text-[#6B6870] mt-2 max-w-lg">
@@ -169,7 +169,7 @@ const Products = () => {
           <div className="w-14 h-14 bg-[#EDE5F8] text-[#834FD4] rounded-full flex items-center justify-center mx-auto">
             <Sparkles className="w-6 h-6" />
           </div>
-          <h3 className="text-xl font-serif font-bold text-[#171719]">
+          <h3 className="text-xl font-bold text-[#171719]">
             No beauty essentials found
           </h3>
           <p className="text-xs text-[#6B6870] leading-relaxed max-w-xs mx-auto">

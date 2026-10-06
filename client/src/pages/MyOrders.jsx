@@ -75,7 +75,7 @@ const MyOrders = () => {
         <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#834FD4] block">
           ACCOUNT HISTORY
         </span>
-        <h1 className="text-3xl sm:text-4xl font-serif font-bold text-[#171719] mt-1">
+        <h1 className="text-3xl sm:text-4xl font-bold text-[#171719] mt-1">
           My Order History
         </h1>
         <p className="text-xs text-[#6B6870] mt-1.5">
@@ -95,7 +95,7 @@ const MyOrders = () => {
           <div className="w-16 h-16 bg-[#EDE5F8] text-[#834FD4] rounded-full flex items-center justify-center mx-auto">
             <Package className="w-8 h-8" />
           </div>
-          <h3 className="text-2xl font-serif font-bold text-[#171719]">
+          <h3 className="text-2xl font-bold text-[#171719]">
             You haven't placed any orders yet.
           </h3>
           <p className="text-xs text-[#6B6870] leading-relaxed max-w-xs mx-auto">
@@ -154,7 +154,7 @@ const MyOrders = () => {
                           className="w-12 h-12 rounded-xl object-cover bg-[#FAF9FD] border border-[#E8E3EF] shrink-0"
                         />
                         <div>
-                          <p className="text-xs font-serif font-bold text-[#171719] line-clamp-1">
+                          <p className="text-xs font-bold text-[#171719] line-clamp-1">
                             {item.name}
                           </p>
                           <span className="text-[11px] text-[#6B6870]">

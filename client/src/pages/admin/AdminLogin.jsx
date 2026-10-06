@@ -38,7 +38,7 @@ const AdminLogin = () => {
           <div className="w-12 h-12 rounded-2xl bg-amber-500/20 text-amber-400 border border-amber-500/30 flex items-center justify-center mx-auto shadow-sm mb-2">
             <ShieldCheck className="w-6 h-6" />
           </div>
-          <h1 className="text-3xl font-serif font-bold text-white">Admin Portal</h1>
+          <h1 className="text-3xl font-bold text-white">Admin Portal</h1>
           <p className="text-xs text-slate-400">
             Sign in with administrative credentials to access store operations
           </p>

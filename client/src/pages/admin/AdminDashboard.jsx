@@ -33,7 +33,7 @@ const AdminDashboard = () => {
           <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#834FD4] block">
             ADMIN OVERVIEW
           </span>
-          <h1 className="text-2xl sm:text-3xl font-serif font-bold text-[#171719] mt-1">
+          <h1 className="text-2xl sm:text-3xl font-bold text-[#171719] mt-1">
             Store Performance Dashboard
           </h1>
           <p className="text-xs text-[#6B6870] mt-1">
@@ -116,7 +116,7 @@ const AdminDashboard = () => {
             <div className="bg-white rounded-2xl border border-[#E8E3EF] shadow-card overflow-hidden">
               <div className="p-6 border-b border-[#F6F1FB] flex items-center justify-between">
                 <div>
-                  <h3 className="font-serif font-bold text-[#171719] text-base">Recent Transactions</h3>
+                  <h3 className="font-bold text-[#171719] text-base">Recent Transactions</h3>
                   <p className="text-xs text-[#6B6870]">Latest orders received from customer storefront</p>
                 </div>
                 <Link

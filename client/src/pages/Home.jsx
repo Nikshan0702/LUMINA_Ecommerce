@@ -81,7 +81,7 @@ const Home = () => {
                 <span>CLEAN. EFFECTIVE. GENTLE.</span>
               </div>
 
-              <h1 className="text-4xl sm:text-6xl xl:text-7xl font-serif font-bold text-[#171719] tracking-tight leading-[1.08]">
+              <h1 className="text-4xl sm:text-6xl xl:text-7xl font-bold text-[#171719] tracking-tight leading-[1.08]">
                 REAL CARE. <br />
                 <span className="italic font-normal text-[#834FD4]">NATURAL GLOW.</span> <br />
                 EVERYDAY.
@@ -234,7 +234,7 @@ const Home = () => {
             <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#834FD4]">
               Curated Collections
             </span>
-            <h2 className="text-2xl sm:text-4xl font-serif font-bold text-[#171719] mt-1">
+            <h2 className="text-2xl sm:text-4xl font-bold text-[#171719] mt-1">
               Shop by Beauty Category
             </h2>
           </div>
@@ -262,7 +262,7 @@ const Home = () => {
               </div>
 
               <div>
-                <h3 className="font-serif font-bold text-sm text-[#171719]">
+                <h3 className="font-bold text-sm text-[#171719]">
                   {cat.name}
                 </h3>
                 <p className="text-[11px] text-[#6B6870] line-clamp-1 mt-0.5">
@@ -290,7 +290,7 @@ const Home = () => {
             <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#834FD4]">
               Iconic Formulations
             </span>
-            <h2 className="text-2xl sm:text-4xl font-serif font-bold text-[#171719] mt-1">
+            <h2 className="text-2xl sm:text-4xl font-bold text-[#171719] mt-1">
               Featured Cosmetics & Care
             </h2>
           </div>
@@ -324,7 +324,7 @@ const Home = () => {
             <span className="px-3.5 py-1 bg-white text-[#834FD4] text-xs font-bold rounded-full uppercase tracking-wider inline-block shadow-sm">
               Modern Beauty Experience
             </span>
-            <h3 className="text-3xl sm:text-4xl font-serif font-bold text-[#171719] leading-tight">
+            <h3 className="text-3xl sm:text-4xl font-bold text-[#171719] leading-tight">
               Designed for effortless, glowing everyday care.
             </h3>
             <p className="text-sm text-[#6B6870] leading-relaxed">

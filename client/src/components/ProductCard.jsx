@@ -76,7 +76,7 @@ const ProductCard = ({ product }) => {
 
         <Link
           to={`/products/${product._id}`}
-          className="font-serif font-bold text-base text-[#171719] group-hover:text-[#834FD4] transition-colors line-clamp-1"
+          className="font-bold text-base text-[#171719] group-hover:text-[#834FD4] transition-colors line-clamp-1"
           title={product.name}
         >
           {product.name}

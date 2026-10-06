@@ -7,10 +7,13 @@
     font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
     background-color: #FAF9FD;
     color: #171719;
+    letter-spacing: -0.01em;
   }
 
-  h1, h2, h3, h4 {
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
     color: #171719;
+    letter-spacing: -0.025em;
   }
 }
 

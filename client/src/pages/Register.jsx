@@ -48,7 +48,7 @@ const Register = () => {
           <div className="w-12 h-12 rounded-full bg-[#EDE5F8] text-[#834FD4] flex items-center justify-center mx-auto mb-2">
             <Sparkles className="w-5 h-5" />
           </div>
-          <h1 className="text-3xl font-serif font-bold text-[#171719]">
+          <h1 className="text-3xl font-bold text-[#171719]">
             Create Account
           </h1>
           <p className="text-xs text-[#6B6870]">

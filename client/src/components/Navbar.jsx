@@ -26,7 +26,7 @@ const Navbar = () => {
               <Sparkles className="w-4 h-4" />
             </div>
             <div className="flex flex-col">
-              <span className="text-xl font-serif font-bold tracking-tight text-[#171719] leading-none">
+              <span className="text-xl font-bold tracking-tight text-[#171719] leading-none">
                 LUMINA
               </span>
               <span className="text-[10px] tracking-[0.2em] text-[#6B6870] uppercase font-medium mt-1">

@@ -29,7 +29,7 @@ const Checkout = () => {
   if (cart.length === 0) {
     return (
       <div className="max-w-xl mx-auto py-24 px-4 text-center space-y-4">
-        <h2 className="text-2xl font-serif font-bold text-[#171719]">Your bag is empty</h2>
+        <h2 className="text-2xl font-bold text-[#171719]">Your bag is empty</h2>
         <p className="text-xs text-[#6B6870]">Add products to your shopping bag before proceeding to checkout.</p>
         <Link
           to="/products"
@@ -143,7 +143,7 @@ Order ID: ${formatOrderId(createdOrder._id)}`;
         <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#834FD4] block">
           SECURE CHECKOUT
         </span>
-        <h1 className="text-3xl sm:text-4xl font-serif font-bold text-[#171719] mt-1">
+        <h1 className="text-3xl sm:text-4xl font-bold text-[#171719] mt-1">
           Shipping & Payment
         </h1>
       </div>
@@ -160,7 +160,7 @@ Order ID: ${formatOrderId(createdOrder._id)}`;
         <div className="lg:col-span-2 space-y-8">
           {/* Customer Details Box */}
           <div className="bg-white p-7 rounded-3xl border border-[#E8E3EF] shadow-card space-y-5">
-            <h2 className="text-base font-serif font-bold text-[#171719] border-b border-[#F6F1FB] pb-3">
+            <h2 className="text-base font-bold text-[#171719] border-b border-[#F6F1FB] pb-3">
               1. Delivery Information
             </h2>
 
@@ -244,7 +244,7 @@ Order ID: ${formatOrderId(createdOrder._id)}`;
 
           {/* Payment Method Selector */}
           <div className="bg-white p-7 rounded-3xl border border-[#E8E3EF] shadow-card space-y-5">
-            <h2 className="text-base font-serif font-bold text-[#171719] border-b border-[#F6F1FB] pb-3">
+            <h2 className="text-base font-bold text-[#171719] border-b border-[#F6F1FB] pb-3">
               2. Payment Method
             </h2>
 
@@ -318,7 +318,7 @@ Order ID: ${formatOrderId(createdOrder._id)}`;
 
         {/* Order Summary Column */}
         <div className="bg-white p-7 rounded-3xl border border-[#E8E3EF] shadow-card space-y-6 h-fit sticky top-28">
-          <h2 className="text-base font-serif font-bold text-[#171719] border-b border-[#F6F1FB] pb-3">
+          <h2 className="text-base font-bold text-[#171719] border-b border-[#F6F1FB] pb-3">
             Bag Items ({cart.length})
           </h2>
 
@@ -383,7 +383,7 @@ Order ID: ${formatOrderId(createdOrder._id)}`;
                   <CreditCard className="w-4 h-4" />
                 </div>
                 <div>
-                  <h3 className="font-serif font-bold text-[#171719] text-base">PayHere Checkout</h3>
+                  <h3 className="font-bold text-[#171719] text-base">PayHere Checkout</h3>
                   <span className="text-[11px] text-[#6B6870]">Lumina Cosmetics Official Store</span>
                 </div>
               </div>
@@ -402,7 +402,7 @@ Order ID: ${formatOrderId(createdOrder._id)}`;
               <span className="text-[11px] font-semibold text-[#6B6870] uppercase tracking-wider">
                 Total Payable Amount
               </span>
-              <div className="text-3xl font-serif font-bold text-[#171719]">
+              <div className="text-3xl font-bold text-[#171719]">
                 {formatPrice(payhereModalData.order.total)}
               </div>
               <p className="text-[11px] text-[#6B6870] pt-0.5">

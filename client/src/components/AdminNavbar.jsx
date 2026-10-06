@@ -28,7 +28,7 @@ const AdminNavbar = () => {
               <div className="w-8 h-8 rounded-xl bg-amber-500/20 border border-amber-500/30 flex items-center justify-center text-amber-400">
                 <ShieldCheck className="w-4 h-4" />
               </div>
-              <span className="tracking-tight font-serif">Lumina Admin</span>
+              <span className="tracking-tight font-bold">Lumina Admin</span>
             </div>
 
             <nav className="flex items-center gap-1.5">

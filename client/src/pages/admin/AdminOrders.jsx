@@ -64,7 +64,7 @@ const AdminOrders = () => {
             <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#834FD4] block">
               DISPATCH & FULFILLMENT
             </span>
-            <h1 className="text-2xl sm:text-3xl font-serif font-bold text-[#171719] mt-1">
+            <h1 className="text-2xl sm:text-3xl font-bold text-[#171719] mt-1">
               Customer Order Management
             </h1>
             <p className="text-xs text-[#6B6870] mt-1">
@@ -202,7 +202,7 @@ const AdminOrders = () => {
           <div className="bg-white rounded-3xl max-w-lg w-full p-8 space-y-5 shadow-soft border border-[#E8E3EF] max-h-[90vh] overflow-y-auto text-xs">
             <div className="flex items-center justify-between border-b border-[#F6F1FB] pb-4">
               <div>
-                <h3 className="font-serif font-bold text-[#171719] text-base">
+                <h3 className="font-bold text-[#171719] text-base">
                   Order Details: {formatOrderId(selectedOrder._id)}
                 </h3>
                 <span className="text-[#6B6870] text-[11px]">
@@ -236,12 +236,12 @@ const AdminOrders = () => {
             </div>
 
             <div>
-              <h4 className="font-serif font-bold text-[#171719] mb-2.5">Purchased Cosmetics:</h4>
+              <h4 className="font-bold text-[#171719] mb-2.5">Purchased Cosmetics:</h4>
               <div className="divide-y divide-[#F6F1FB] border border-[#E8E3EF] rounded-2xl overflow-hidden">
                 {selectedOrder.items.map((item, idx) => (
                   <div key={idx} className="p-3.5 flex items-center justify-between">
                     <div>
-                      <p className="font-serif font-bold text-[#171719]">{item.name}</p>
+                      <p className="font-bold text-[#171719]">{item.name}</p>
                       <p className="text-[#6B6870] text-[11px]">
                         {formatPrice(item.price)} × {item.quantity}
                       </p>
