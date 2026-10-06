@@ -401,3 +401,4 @@ npm run dev
 1. **PayHere Live Payments:** Configured exclusively for sandbox mode; requires merchant verification for live production transactions.
 2. **Single Currency:** Transactions are calculated in LKR.
 3. **SMS Notifications:** Notifications are delivered through the in-app order tracker and WhatsApp chat rather than third-party SMS gateways.
+# LUMINA_Ecommerce
