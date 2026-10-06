@@ -375,50 +375,103 @@ Order ID: ${createdOrder._id}`;
       {/* PayHere Payment Interactive Modal */}
       {payhereModalData && (
         <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
-          <div className="bg-white rounded-3xl max-w-lg w-full p-8 space-y-6 shadow-soft border border-[#E8E3EF]">
+          <div className="bg-white rounded-3xl max-w-md w-full p-6 sm:p-8 space-y-6 shadow-soft border border-[#E8E3EF] animate-in fade-in zoom-in-95 duration-200">
+            {/* Header */}
             <div className="flex items-center justify-between border-b border-[#F6F1FB] pb-4">
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-2xl bg-[#EDE5F8] flex items-center justify-center text-[#834FD4]">
-                  <CreditCard className="w-5 h-5" />
+              <div className="flex items-center gap-2.5">
+                <div className="w-9 h-9 rounded-xl bg-[#EDE5F8] flex items-center justify-center text-[#834FD4]">
+                  <CreditCard className="w-4 h-4" />
                 </div>
                 <div>
-                  <h3 className="font-serif font-bold text-[#171719] text-base">PayHere Secure Checkout</h3>
-                  <p className="text-[11px] text-[#6B6870]">Merchant ID: {payhereModalData.params.merchant_id}</p>
+                  <h3 className="font-serif font-bold text-[#171719] text-base">PayHere Checkout</h3>
+                  <span className="text-[11px] text-[#6B6870]">Lumina Cosmetics Official Store</span>
                 </div>
               </div>
-              <span className="px-3 py-1 text-[10px] font-bold bg-[#EDE5F8] text-[#834FD4] rounded-full">
-                SECURE 256-BIT
+              <button
+                type="button"
+                onClick={() => setPayhereModalData(null)}
+                className="w-8 h-8 rounded-full hover:bg-[#FAF9FD] text-[#6B6870] hover:text-[#171719] flex items-center justify-center text-sm font-bold transition-colors"
+                aria-label="Close"
+              >
+                ✕
+              </button>
+            </div>
+
+            {/* Total Amount Focus Banner */}
+            <div className="bg-[#FAF9FD] p-5 rounded-2xl border border-[#E8E3EF] text-center space-y-1">
+              <span className="text-[11px] font-semibold text-[#6B6870] uppercase tracking-wider">
+                Total Payable Amount
               </span>
-            </div>
-
-            <div className="bg-[#FAF9FD] p-4 rounded-2xl space-y-2 text-xs border border-[#E8E3EF]">
-              <div className="flex justify-between">
-                <span className="text-[#6B6870]">Order Reference:</span>
-                <span className="font-mono font-semibold text-[#171719]">{payhereModalData.order._id}</span>
+              <div className="text-3xl font-serif font-bold text-[#171719]">
+                {formatPrice(payhereModalData.order.total)}
               </div>
-              <div className="flex justify-between">
-                <span className="text-[#6B6870]">Total Amount:</span>
-                <span className="font-bold text-[#171719]">{formatPrice(payhereModalData.order.total)}</span>
-              </div>
-              <div className="flex justify-between">
-                <span className="text-[#6B6870]">Security Checksum:</span>
-                <span className="font-mono text-[10px] text-[#834FD4] truncate max-w-[200px]">
-                  {payhereModalData.params.hash}
-                </span>
-              </div>
-            </div>
-
-            <div className="p-4 bg-[#EDE5F8] rounded-2xl border border-[#DFCFF4] text-xs text-[#834FD4] space-y-1">
-              <div className="font-bold flex items-center gap-1.5">
-                <CheckCircle2 className="w-4 h-4 text-[#834FD4]" />
-                Payment Verification
-              </div>
-              <p className="text-[11px] text-[#6B6870]">
-                Click below to complete and verify your online payment.
+              <p className="text-[11px] text-[#6B6870] pt-0.5">
+                Order #{payhereModalData.order._id.slice(-6).toUpperCase()} • {cart.length} item(s)
               </p>
             </div>
 
-            <div className="flex gap-3">
+            {/* Simulated Payment Card Form */}
+            <div className="space-y-3.5 text-xs">
+              <div>
+                <label className="block text-[#171719] font-semibold mb-1">Cardholder Name</label>
+                <input
+                  type="text"
+                  readOnly
+                  value={formData.name || 'Valued Customer'}
+                  className="w-full px-3.5 py-2.5 bg-[#FAF9FD] border border-[#E8E3EF] rounded-xl text-[#171719] font-medium outline-none"
+                />
+              </div>
+
+              <div>
+                <label className="block text-[#171719] font-semibold mb-1">Card Number</label>
+                <div className="relative">
+                  <input
+                    type="text"
+                    readOnly
+                    value="•••• •••• •••• 4242"
+                    className="w-full pl-3.5 pr-20 py-2.5 bg-[#FAF9FD] border border-[#E8E3EF] rounded-xl text-[#171719] font-mono font-medium outline-none"
+                  />
+                  <div className="absolute right-3 top-2.5 flex items-center gap-1">
+                    <span className="px-1.5 py-0.5 text-[9px] font-bold bg-[#EDE5F8] text-[#834FD4] rounded">
+                      VISA
+                    </span>
+                    <span className="px-1.5 py-0.5 text-[9px] font-bold bg-[#FAF9FD] text-[#6B6870] rounded border border-[#E8E3EF]">
+                      MC
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-2 gap-3">
+                <div>
+                  <label className="block text-[#171719] font-semibold mb-1">Expires</label>
+                  <input
+                    type="text"
+                    readOnly
+                    value="12 / 28"
+                    className="w-full px-3.5 py-2.5 bg-[#FAF9FD] border border-[#E8E3EF] rounded-xl text-[#171719] font-mono outline-none"
+                  />
+                </div>
+                <div>
+                  <label className="block text-[#171719] font-semibold mb-1">CVV</label>
+                  <input
+                    type="password"
+                    readOnly
+                    value="•••"
+                    className="w-full px-3.5 py-2.5 bg-[#FAF9FD] border border-[#E8E3EF] rounded-xl text-[#171719] font-mono outline-none"
+                  />
+                </div>
+              </div>
+            </div>
+
+            {/* End-to-End Encryption Guarantee */}
+            <div className="flex items-center justify-center gap-2 text-[11px] text-[#6B6870] pt-1">
+              <ShieldCheck className="w-4 h-4 text-[#50805C]" />
+              <span>256-bit SSL encrypted secure transaction</span>
+            </div>
+
+            {/* Actions */}
+            <div className="flex gap-3 pt-2">
               <button
                 type="button"
                 onClick={() => setPayhereModalData(null)}
@@ -430,9 +483,9 @@ Order ID: ${createdOrder._id}`;
                 type="button"
                 onClick={handlePayHereComplete}
                 disabled={submitting}
-                className="flex-1 py-3 px-5 rounded-full bg-[#9B6DE3] hover:bg-[#834FD4] text-white text-xs font-bold transition-colors shadow-soft"
+                className="flex-1 py-3 px-5 rounded-full bg-[#9B6DE3] hover:bg-[#834FD4] text-white text-xs font-bold transition-all shadow-soft flex items-center justify-center gap-2"
               >
-                {submitting ? 'Confirming...' : 'Authorize & Pay'}
+                {submitting ? 'Authorizing...' : `Pay ${formatPrice(payhereModalData.order.total)}`}
               </button>
             </div>
           </div>
