@@ -6,7 +6,7 @@ import { useAuth } from '../context/AuthContext';
 import api from '../services/api';
 import { formatPrice } from '../utils/formatters';
 
-const WHATSAPP_STORE_NUMBER = '94771234567';
+const WHATSAPP_STORE_NUMBER = '94771129911';
 
 const Checkout = () => {
   const { cart, subtotal, deliveryFee, total, clearCart } = useCart();

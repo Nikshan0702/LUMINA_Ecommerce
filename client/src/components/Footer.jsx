@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Sparkles, Phone, Mail, MapPin, MessageCircle } from 'lucide-react';
 
 const Footer = () => {
-  const whatsappNumber = '94771234567';
+  const whatsappNumber = '94771129911';
 
   return (
     <footer className="bg-[#171719] text-[#FAF9FD] pt-16 pb-12 border-t border-[#2A2930]">
