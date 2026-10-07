@@ -1,60 +1,68 @@
 # Lumina Cosmetics & Beauty Store
+### Full-Stack E-Commerce Platform — Software Engineer Intern Assessment
 
-A full-stack, responsive E-Commerce web application designed and developed for the **Software Engineer Intern** technical assessment.
+Hello! This repository contains my submission for the Software Engineer Intern Technical Assessment (72-Hour Challenge). 
 
-This project represents a realistic cosmetics and beauty retail platform (**Lumina Cosmetics**) selling skincare, haircare, makeup, body care, and fragrances. It features a complete customer storefront, a back-office Admin Panel, persistent MongoDB storage, PayHere online payments, and direct WhatsApp order flow.
-
----
-
-## Live Links & Submission Details
-
-- **Live Storefront (Frontend)**: [https://lumina-indol-tau.vercel.app](https://lumina-indol-tau.vercel.app)
-- **Live Backend API**: [https://lumina-ecommerce-gmqq.onrender.com](https://lumina-ecommerce-gmqq.onrender.com)
-- **API Health Check**: [https://lumina-ecommerce-gmqq.onrender.com/api/health](https://lumina-ecommerce-gmqq.onrender.com/api/health)
-- **GitHub Repository**: [https://github.com/Nikshan0702/LUMINA_Ecommerce](https://github.com/Nikshan0702/LUMINA_Ecommerce)
-- **Store Owner WhatsApp**: `+94771129911`
+For the assigned business scenario, I developed **Lumina Cosmetics**, an online beauty and personal care store selling skincare, haircare, makeup, body care, and fragrances.
 
 ---
 
-## Demo Accounts for Evaluation
+## Live Links
 
-Quick-fill demo buttons are provided on the Sign-In page for 1-click evaluation:
-
-| Role | Email | Password | Access Rights |
-| :--- | :--- | :--- | :--- |
-| **Admin** | `admin@lumina.com` | `adminpassword123` | Full Admin Panel (`/admin/dashboard`, `/admin/products`, `/admin/orders`) |
-| **Customer** | `customer@example.com` | `customerpassword123` | Storefront Shopping, Bag, Checkout, Order Tracking |
+- **Live Storefront:** https://lumina-indol-tau.vercel.app
+- **Live Backend API:** https://lumina-ecommerce-gmqq.onrender.com
+- **GitHub Repository:** https://github.com/Nikshan0702/LUMINA_Ecommerce.git
+- **Business WhatsApp Number:** +94771129911
 
 ---
 
-## Core Features
+## Demo Accounts for Testing
 
-### 1. Customer Storefront
-- **Product Browsing & Filtering**: Clean catalog view with search by name/brand, category filtering (*Skincare, Haircare, Makeup, Body Care, Fragrance*), and price sorting.
-- **Product Details**: Product specifications, live stock status, and dynamic quantity selector.
-- **Guest Shopping Bag**: Customers can add items to bag without logging in. Real-time stock boundaries prevent exceeding available inventory.
-- **Dual Checkout Options**:
-  - **PayHere Online Payment**: Secure online card gateway flow using standard PayHere Sandbox MD5 checksum validation.
-  - **Order via WhatsApp**: Automatically formats the entire shopping bag and delivery details into a clean message and opens WhatsApp chat with the store owner (`+94771129911`).
-- **Customer Order Tracking**: Real-time view of order history, fulfillment progress, and payment status at `/my-orders`.
+You can use these accounts to test the application, or use the one-click demo buttons on the login page:
 
-### 2. Admin Management Panel
-- **Protected Back-Office**: Role-based access control (RBAC) restricts admin routes to authenticated admin users only.
-- **Store Dashboard**: KPI metrics for Total Revenue, Total Orders, Pending Dispatches, Catalog Count, and Recent Transactions.
-- **Inventory & Catalog Management**: Add new products, update prices and stock levels, toggle active visibility, and delete products.
-- **Order Lifecycle Management**: Update fulfillment status (*Pending → Confirmed → Shipped → Delivered → Cancelled*) and payment status (*Pending ↔ Paid*).
-- **Auto Stock Restoration**: Cancelling an order automatically restores the purchased quantities back to inventory stock.
+- **Admin Account:**
+  - Email: `admin@lumina.com`
+  - Password: `adminpassword123`
+  - Access: Full Admin Dashboard, Product Inventory Management, Order Status & Dispatch updates
+
+- **Customer Account:**
+  - Email: `customer@example.com`
+  - Password: `customerpassword123`
+  - Access: Browsing, Shopping Bag, Checkout, Past Order History
+
+*(You can also register a new account or browse and add items to the cart as a guest before logging in at checkout).*
 
 ---
 
-## Technologies Used
+## Quick Testing Guide
 
-- **Frontend**: React 18, Vite, Tailwind CSS, Plus Jakarta Sans typography, Lucide Icons, Axios.
-- **Backend**: Node.js, Express.js (RESTful API architecture).
-- **Database**: MongoDB Atlas with Mongoose ODM.
-- **Authentication**: JWT (JSON Web Tokens) with 30-day validity, bcryptjs password hashing.
-- **Payment & Integration**: PayHere Sandbox (crypto MD5 checksum formula), WhatsApp Click-to-Chat API.
-- **Hosting & Deployment**: Vercel (Frontend SPA) + Render (Backend Web Service) + MongoDB Atlas (Cloud Database).
+### 1. Customer Flow
+1. Open the live site at https://lumina-indol-tau.vercel.app.
+2. Search for items or filter by category (Skincare, Haircare, Makeup, etc.).
+3. Open a product page and select quantity (inventory bounds prevent adding more than available stock).
+4. Go to the Shopping Bag and proceed to Checkout.
+5. Fill in delivery details and choose your payment method:
+   - **PayHere Online Payment:** Opens the PayHere payment modal with verified amount. Completing payment updates the order status to `Paid`.
+   - **Order via WhatsApp:** Pre-fills a clean, itemized order message with line items, quantities, subtotal, Rs. 500 delivery, and human-readable order code, directly opening a chat with `+94771129911`.
+6. View your placed order under **My Orders** with real-time status badges.
+
+### 2. Admin Flow
+1. Go to `/admin/login` (or click Admin Portal).
+2. Log in with `admin@lumina.com` / `adminpassword123`.
+3. View business metrics on the Dashboard (Total Revenue, Orders, Pending Dispatches, Catalog Count).
+4. Go to **Products** to add new items, update stock, change prices, or delete products.
+5. Go to **Orders** to view customer orders, inspect items, update fulfillment (*Pending → Confirmed → Shipped → Delivered*), or update payment (*Pending / Paid*).
+6. If you change an order's status to **Cancelled**, the system automatically adds the ordered quantities back to product stock.
+
+---
+
+## Tech Stack
+
+- **Frontend:** React 18, Vite, Tailwind CSS, React Router v6, Axios, Lucide Icons
+- **Backend:** Node.js, Express.js (REST API)
+- **Database:** MongoDB Atlas with Mongoose
+- **Authentication:** JWT (JSON Web Tokens) with 30-day expiry + bcryptjs password hashing
+- **Deployment:** Vercel (Frontend SPA) + Render (Backend Web Service) + MongoDB Atlas (Database)
 
 ---
 
@@ -62,131 +70,102 @@ Quick-fill demo buttons are provided on the Sign-In page for 1-click evaluation:
 
 ```text
 TaskDartCode/
-├── client/                     # Frontend (React 18 + Vite)
-│   ├── public/                 # Static assets, favicon, logo, _redirects (SPA routing)
+├── client/                     # Frontend React (Vite)
+│   ├── public/                 # Static assets, logo, favicon, _redirects
 │   ├── src/
-│   │   ├── components/         # Navbar, Footer, ProductCard, AdminNavbar, ProtectedRoute
-│   │   ├── context/            # AuthContext (user state) & CartContext (shopping bag)
-│   │   ├── pages/              # Home, Products, ProductDetail, Cart, Checkout, MyOrders, Login
-│   │   │   └── admin/          # AdminDashboard, AdminProducts, AdminOrders, AdminLogin
-│   │   ├── services/           # api.js (Axios instance with JWT interceptors)
+│   │   ├── components/         # Navbar, Footer, ProductCard, AdminNavbar
+│   │   ├── context/            # AuthContext, CartContext
+│   │   ├── pages/              # Storefront pages & admin panel pages
+│   │   ├── services/           # api.js (Axios instance with JWT interceptor)
 │   │   └── utils/              # formatters.js (currency, dates, order codes)
-│   ├── vercel.json             # Vercel SPA routing fallback rule
-│   └── tailwind.config.js      # Palette and typography theme
+│   └── vercel.json             # SPA routing fallback
 │
-└── server/                     # Backend (Node.js + Express + MongoDB)
-    ├── config/                 # db.js (Mongoose connection)
-    ├── controllers/            # authController, productController, orderController, adminController
-    ├── middleware/             # authMiddleware (JWT & admin guard), errorMiddleware
-    ├── models/                 # User.js, Product.js, Order.js
-    ├── routes/                 # authRoutes, productRoutes, orderRoutes, adminRoutes
-    ├── utils/                  # payhere.js (MD5 hash), seedData.js (demo catalog)
-    └── server.js               # Application entry point
+└── server/                     # Backend Node.js / Express
+    ├── config/                 # db.js (MongoDB connection)
+    ├── controllers/            # auth, product, order, admin controllers
+    ├── middleware/             # JWT auth & admin role guards, error handler
+    ├── models/                 # User, Product, Order Mongoose schemas
+    ├── routes/                 # Express API routes
+    └── utils/                  # payhere hash utility, seed data
 ```
 
 ---
 
-## Database Design
+## Key Technical Decisions & Security
 
-### 1. `User` Model
-- `name` (String, required)
-- `email` (String, required, unique, indexed)
-- `password` (String, required, bcrypt hashed)
-- `role` (String, enum: `['customer', 'admin']`, default: `'customer'`)
-- `phone` (String)
+1. **Price Verification on the Backend:**
+   The frontend never tells the server how much an item costs. During checkout, the backend takes the product IDs, fetches their actual prices directly from MongoDB, and calculates the subtotal, delivery fee, and total amount on the server. This prevents any client-side price tampering.
 
-### 2. `Product` Model
-- `name` (String, required)
-- `description` (String, required)
-- `category` (String, required, indexed)
-- `brand` (String, required)
-- `price` (Number, required)
-- `image` (String, required)
-- `stock` (Number, required, default: 0)
-- `isActive` (Boolean, default: true)
+2. **Inventory Stock Management:**
+   When an order is created, product quantities are automatically decremented from available stock. If an admin cancels an order, the server loops through the line items and automatically restores the stock.
 
-### 3. `Order` Model
-- `user` (ObjectId ref User, required)
-- `customerName`, `email`, `phone`, `shippingAddress`, `city` (Strings)
-- `items`: Array of `{ product: ObjectId, name: String, price: Number, quantity: Number, image: String }`
-- `subtotal` (Number), `deliveryFee` (Number, default: 500), `total` (Number)
-- `paymentMethod` (enum: `['PayHere', 'WhatsApp']`)
-- `paymentStatus` (enum: `['Pending', 'Paid', 'Failed']`)
-- `orderStatus` (enum: `['Pending', 'Confirmed', 'Processing', 'Shipped', 'Delivered', 'Cancelled']`)
+3. **PayHere Hash Generation:**
+   The payment hash is calculated on the server using Node's crypto library following PayHere's formula: `MD5(merchant_id + order_id + amount + currency + MD5(merchant_secret))`. The merchant secret is stored securely in backend environment variables and is never sent to the browser.
+
+4. **Structured WhatsApp Message:**
+   Instead of just sending a link, the checkout builds an itemized, readable message including product names, quantities, unit prices, subtotal, delivery fee, customer details, and a short human-readable order ID (`#ORD-XXXXXX`).
+
+5. **Role-Based Access Control (RBAC):**
+   Admin APIs and pages are protected. Regular customers cannot access administrative endpoints (`/api/admin/*`, product creation/edits), returning 403 Forbidden if attempted without an admin token.
+
+6. **Clean Order Numbers:**
+   Raw 24-character database ObjectIds (like `6ac4b10...`) are converted into clean, readable order codes (`#ORD-DE1997`) across both customer and admin interfaces.
 
 ---
 
-## Important Technical & Security Decisions
+## Database Design Summary
 
-1. **Server-Side Price Verification**:
-   The frontend never dictates line-item prices. When an order is created, the backend re-queries each product's price from MongoDB to compute the total, preventing client price manipulation.
-2. **Real-Time Inventory Integrity**:
-   Placing an order decrements stock atomically. If an admin marks an order as `Cancelled`, stock is automatically incremented back to the catalog.
-3. **PayHere Hash Generation**:
-   The server generates the required MD5 checksum using `crypto.createHash('md5')` matching the official formula:
-   `MD5(merchant_id + order_id + amount + currency + MD5(merchant_secret))`
-4. **Structured WhatsApp Order Format**:
-   The WhatsApp ordering flow generates a readable, itemized message pre-filled with customer details, quantities, subtotal, delivery fee, and a clean human-readable order code (`#ORD-XXXXXX`).
-5. **Role-Based Access Control (RBAC)**:
-   Sensitive administrative endpoints are strictly guarded by JWT verification and role checks (`adminMiddleware`). Non-admin users are blocked with 403 Forbidden.
-6. **Clean E-Commerce Identifier Format**:
-   Internal 24-character MongoDB ObjectIds are abstracted into professional order codes (`#ORD-XXXXXX`) across all customer and admin screens.
+- **Users:** Stores name, email (unique), hashed password, phone, and role (`customer` or `admin`).
+- **Products:** Stores name, description, category, brand, price, image URL, stock count, and active visibility toggle.
+- **Orders:** References the user and stores customer info, line items snapshot (product, name, price, quantity, image), subtotal, delivery fee, total, payment method (`PayHere` / `WhatsApp`), payment status (`Pending` / `Paid`), and fulfillment status (`Pending`, `Confirmed`, `Shipped`, `Delivered`, `Cancelled`).
 
 ---
 
-## Local Setup Instructions
+## Local Setup
 
-### Prerequisites
-- Node.js (v18+)
-- MongoDB Atlas connection string (or local MongoDB)
+If you wish to run the project locally:
 
-### 1. Clone the Repository
-```bash
-git clone https://github.com/Nikshan0702/LUMINA_Ecommerce.git
-cd LUMINA_Ecommerce
-```
-
-### 2. Backend Setup
+### 1. Backend
 ```bash
 cd server
 npm install
 ```
 
-Create a `.env` file in the `server` folder:
+Create a `server/.env` file:
 ```env
 PORT=5001
 MONGO_URI=your_mongodb_connection_string
-JWT_SECRET=your_jwt_secret_key
+JWT_SECRET=your_jwt_secret
 PAYHERE_MERCHANT_ID=1211149
 PAYHERE_SECRET=your_payhere_secret
 WHATSAPP_NUMBER=94771129911
 NODE_ENV=development
 ```
 
-Seed initial cosmetics catalog and demo users:
+Seed initial products and accounts:
 ```bash
 npm run seed
 ```
 
-Start the backend:
+Start backend:
 ```bash
 npm run dev
-# Server running on http://localhost:5001
+# Running on http://localhost:5001
 ```
 
-### 3. Frontend Setup
+### 2. Frontend
 ```bash
 cd ../client
 npm install
 npm run dev
-# Vite running on http://localhost:5173
+# Running on http://localhost:5173
 ```
 
 ---
 
 ## Assumptions & Limitations
 
-- **Currency**: Transactions and pricing are in Sri Lankan Rupees (LKR).
-- **Delivery**: Flat island-wide delivery fee of Rs. 500 is applied.
-- **PayHere**: Configured using standard PayHere Sandbox test merchant credentials.
-- **WhatsApp**: Requires the customer's device to have WhatsApp or WhatsApp Web available.
+- **Currency:** Set to Sri Lankan Rupees (LKR).
+- **Delivery Fee:** Flat rate of Rs. 500 across Sri Lanka.
+- **PayHere:** Implemented using standard PayHere Sandbox test merchant credentials.
+- **WhatsApp:** The WhatsApp flow opens WhatsApp Web or the WhatsApp app with the message pre-filled; the customer taps send to complete direct communication.
