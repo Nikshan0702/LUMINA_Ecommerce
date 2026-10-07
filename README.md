@@ -1,11 +1,5 @@
 # Lumina Cosmetics & Beauty Store
-### Full-Stack E-Commerce Platform — Software Engineer Intern Assessment
 
-Hello! This repository contains my submission for the Software Engineer Intern Technical Assessment (72-Hour Challenge). 
-
-For the assigned business scenario, I developed Lumina Cosmetics, an online beauty and personal care store selling skincare, haircare, makeup, body care, and fragrances.
-
----
 
 ## Live Links
 
