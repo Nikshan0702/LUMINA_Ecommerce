@@ -1,88 +1,60 @@
-# Cosmetics & Beauty Products E-Commerce Platform
+# Lumina Cosmetics & Beauty Store
 
-A modern, responsive full-stack MERN (MongoDB, Express, React, Node.js) E-Commerce platform built for a cosmetics and beauty retailer. The application features a customer-facing storefront, an administrative management panel, PayHere Sandbox payment integration, direct WhatsApp ordering, inventory management, role-based authentication, and mobile-friendly responsive design.
+A full-stack, responsive E-Commerce web application designed and developed for the **Software Engineer Intern** technical assessment.
+
+This project represents a realistic cosmetics and beauty retail platform (**Lumina Cosmetics**) selling skincare, haircare, makeup, body care, and fragrances. It features a complete customer storefront, a back-office Admin Panel, persistent MongoDB storage, PayHere online payments, and direct WhatsApp order flow.
 
 ---
 
-### Quick Reference & Live Links
+## Live Links & Submission Details
+
+- **Live Storefront (Frontend)**: [https://lumina-indol-tau.vercel.app](https://lumina-indol-tau.vercel.app)
 - **Live Backend API**: [https://lumina-ecommerce-gmqq.onrender.com](https://lumina-ecommerce-gmqq.onrender.com)
 - **API Health Check**: [https://lumina-ecommerce-gmqq.onrender.com/api/health](https://lumina-ecommerce-gmqq.onrender.com/api/health)
 - **GitHub Repository**: [https://github.com/Nikshan0702/LUMINA_Ecommerce](https://github.com/Nikshan0702/LUMINA_Ecommerce)
-- **Business WhatsApp Number**: `+94771129911`
+- **Store Owner WhatsApp**: `+94771129911`
 
-#### Demo Login Credentials (for Evaluation):
-| Role | Email | Password | Access |
+---
+
+## Demo Accounts for Evaluation
+
+Quick-fill demo buttons are provided on the Sign-In page for 1-click evaluation:
+
+| Role | Email | Password | Access Rights |
 | :--- | :--- | :--- | :--- |
-| **Admin** | `admin@lumina.com` | `adminpassword123` | Full Admin Back-Office (`/admin/dashboard`, `/admin/products`, `/admin/orders`) |
+| **Admin** | `admin@lumina.com` | `adminpassword123` | Full Admin Panel (`/admin/dashboard`, `/admin/products`, `/admin/orders`) |
 | **Customer** | `customer@example.com` | `customerpassword123` | Storefront Shopping, Bag, Checkout, Order Tracking |
-*(One-click demo buttons are also provided on the sign-in screen for instant evaluator access).*
 
 ---
 
-## Table of Contents
-- [Overview](#overview)
-- [Features](#features)
-- [Tech Stack](#tech-stack)
-- [Project Structure](#project-structure)
-- [System Architecture](#system-architecture)
-- [Database Design](#database-design)
-- [API Endpoints](#api-endpoints)
-- [Authentication & Authorization](#authentication--authorization)
-- [PayHere Sandbox Integration](#payhere-sandbox-integration)
-- [WhatsApp Order Flow](#whatsapp-order-flow)
-- [Setup Instructions](#setup-instructions)
-- [Environment Variables](#environment-variables)
-- [Running the Project](#running-the-project)
-- [Deployment](#deployment)
-- [Security Approach](#security-approach)
-- [Assumptions](#assumptions)
-- [Limitations](#limitations)
+## Core Features
+
+### 1. Customer Storefront
+- **Product Browsing & Filtering**: Clean catalog view with search by name/brand, category filtering (*Skincare, Haircare, Makeup, Body Care, Fragrance*), and price sorting.
+- **Product Details**: Product specifications, live stock status, and dynamic quantity selector.
+- **Guest Shopping Bag**: Customers can add items to bag without logging in. Real-time stock boundaries prevent exceeding available inventory.
+- **Dual Checkout Options**:
+  - **PayHere Online Payment**: Secure online card gateway flow using standard PayHere Sandbox MD5 checksum validation.
+  - **Order via WhatsApp**: Automatically formats the entire shopping bag and delivery details into a clean message and opens WhatsApp chat with the store owner (`+94771129911`).
+- **Customer Order Tracking**: Real-time view of order history, fulfillment progress, and payment status at `/my-orders`.
+
+### 2. Admin Management Panel
+- **Protected Back-Office**: Role-based access control (RBAC) restricts admin routes to authenticated admin users only.
+- **Store Dashboard**: KPI metrics for Total Revenue, Total Orders, Pending Dispatches, Catalog Count, and Recent Transactions.
+- **Inventory & Catalog Management**: Add new products, update prices and stock levels, toggle active visibility, and delete products.
+- **Order Lifecycle Management**: Update fulfillment status (*Pending → Confirmed → Shipped → Delivered → Cancelled*) and payment status (*Pending ↔ Paid*).
+- **Auto Stock Restoration**: Cancelling an order automatically restores the purchased quantities back to inventory stock.
 
 ---
 
-## Overview
+## Technologies Used
 
-This application was engineered for the Software Engineer Intern technical assessment. It satisfies a real-world business scenario for **"Lumina Cosmetics"**, an online cosmetics retailer selling botanical skincare, haircare, makeup, body care, and fragrances.
-
-The project emphasizes simple, maintainable, readable junior/mid-level developer code without unnecessary abstractions or over-engineered design patterns, while adhering to robust security and data consistency standards.
-
----
-
-## Features
-
-### Customer Storefront
-- **Storefront Home:** Hero presentation, curated beauty category explorer, bestsellers showcase, and promotional highlights.
-- **Product Catalog:** Real-time search by product name/brand, category filter tabs (*Skincare, Haircare, Makeup, Body Care, Fragrance, Personal Care*), and price sorting.
-- **Product Details:** High-resolution product showcase, category badges, stock level indicators, quantity selector, and live out-of-stock prevention.
-- **Cart Management:** Persistent shopping cart (stored in `localStorage`), quantity adjustments capped by real-time inventory limits, item removal, and subtotal/delivery calculations.
-- **Multi-Option Checkout:**
-  1. **PayHere Online Payment:** Integrated PayHere Sandbox payment flow with cryptographically signed MD5 checksum hashes.
-  2. **Direct WhatsApp Order:** Generates formatted multi-line order messages with line items, quantities, subtotal, delivery fee, and customer details, opening directly into WhatsApp.
-- **Customer Order Tracking:** Review past orders, fulfillment status, and payment confirmation.
-
-### Admin Management Panel
-- **Protected Portal:** Restricted via JWT and role-based middleware (`role === 'admin'`). Non-admin customers are redirected away.
-- **Admin Dashboard:** Real-time business metrics including Total Revenue, Total Orders, Pending Orders, Catalog Size, and Recent Transactions.
-- **Catalog & Inventory CRUD:** Add new cosmetics, modify prices/descriptions, update inventory counts, toggle product visibility, and soft-delete/remove items.
-- **Order Lifecycle Management:** Update order fulfillment statuses (*Pending, Confirmed, Processing, Shipped, Delivered, Cancelled*) and payment states (*Pending, Paid, Failed*). Automatically restores inventory stock if an order is cancelled.
-
----
-
-## Tech Stack
-
-### Frontend
-- **React 18** (Vite build tool)
-- **Tailwind CSS** (Clean, minimalist beauty-store palette)
-- **React Router v6** (Declarative client routing & protected route wrappers)
-- **Axios** (HTTP client with JWT request/response interceptors)
-- **Lucide React** (Clean icons for UI clarity)
-
-### Backend
-- **Node.js & Express.js** (RESTful API architecture)
-- **MongoDB & Mongoose** (Schema validation, object modeling)
-- **JSON Web Tokens (JWT)** (Stateless bearer token authentication)
-- **bcryptjs** (Salted password hashing)
-- **dotenv & cors** (Configuration & Cross-Origin Resource Sharing)
+- **Frontend**: React 18, Vite, Tailwind CSS, Plus Jakarta Sans typography, Lucide Icons, Axios.
+- **Backend**: Node.js, Express.js (RESTful API architecture).
+- **Database**: MongoDB Atlas with Mongoose ODM.
+- **Authentication**: JWT (JSON Web Tokens) with 30-day validity, bcryptjs password hashing.
+- **Payment & Integration**: PayHere Sandbox (crypto MD5 checksum formula), WhatsApp Click-to-Chat API.
+- **Hosting & Deployment**: Vercel (Frontend SPA) + Render (Backend Web Service) + MongoDB Atlas (Cloud Database).
 
 ---
 
@@ -90,329 +62,131 @@ The project emphasizes simple, maintainable, readable junior/mid-level developer
 
 ```text
 TaskDartCode/
-├── client/                     # Frontend Vite React Application
-│   ├── public/
+├── client/                     # Frontend (React 18 + Vite)
+│   ├── public/                 # Static assets, favicon, logo, _redirects (SPA routing)
 │   ├── src/
-│   │   ├── components/         # Navbar, Footer, ProductCard, ProtectedRoute, AdminRoute, AdminNavbar
-│   │   ├── context/            # AuthContext (user, login, logout) & CartContext (cart items, totals)
-│   │   ├── pages/              # Home, Products, ProductDetail, Cart, Checkout, Login, Register, MyOrders
-│   │   │   └── admin/          # AdminLogin, AdminDashboard, AdminProducts, AdminOrders
-│   │   ├── services/           # Axios API instance with interceptors
-│   │   ├── utils/              # Price and date formatters
-│   │   ├── App.jsx             # Client router and route definitions
-│   │   ├── index.css           # Tailwind base styles
-│   │   └── main.jsx            # React root mount
-│   ├── index.html
-│   ├── package.json
-│   ├── tailwind.config.js
-│   └── vite.config.js
-├── server/                     # Backend Express REST API
-│   ├── config/
-│   │   └── db.js               # MongoDB connection logic
-│   ├── controllers/
-│   │   ├── authController.js   # User registration, login, profile
-│   │   ├── productController.js# Product queries, search, filter, and admin CRUD
-│   │   └── orderController.js  # Order creation, inventory deduction, PayHere hashes, status updates
-│   ├── middleware/
-│   │   ├── authMiddleware.js   # JWT verification & Admin role guard
-│   │   └── errorMiddleware.js  # 404 & Centralized error handler
-│   ├── models/
-│   │   ├── User.js             # Customer & Admin user schema
-│   │   ├── Product.js          # Cosmetics product schema
-│   │   └── Order.js            # Customer order schema with embedded items
-│   ├── routes/
-│   │   ├── authRoutes.js
-│   │   ├── productRoutes.js
-│   │   ├── orderRoutes.js
-│   │   └── adminRoutes.js
-│   ├── utils/
-│   │   ├── generateToken.js    # JWT generator helper
-│   │   ├── payhere.js          # PayHere MD5 checksum calculation
-│   │   └── seedData.js         # Initial mock cosmetics catalog & demo accounts
-│   ├── .env.example
-│   ├── package.json
-│   └── server.js               # Express application entry point
-├── package.json                # Monorepo development scripts
-├── .gitignore
-└── README.md
-```
-
----
-
-## System Architecture
-
-```text
-       +-------------------------------------------------+
-       |               React Client (Vite)               |
-       |  (Tailwind CSS, React Router, Auth/Cart Context)|
-       +-------------------------------------------------+
-                         |             ^
-           HTTP Requests |             | JSON Responses
-                         v             |
-       +-------------------------------------------------+
-       |           Express Server (Node.js)              |
-       |  - Auth Middleware (JWT Verification)           |
-       |  - Admin Guard Middleware (Role Check)          |
-       |  - PayHere MD5 Hash Generator                   |
-       |  - Inventory & Stock Deduction Handler          |
-       +-------------------------------------------------+
-            |                                    |
-            v                                    v
-+-----------------------+           +-------------------------+
-|     MongoDB Atlas     |           |     PayHere Sandbox     |
-| (Users, Products,     |           | (Secure Payment Form /  |
-|  Orders Collections)  |           |  IPN Verification)      |
-+-----------------------+           +-------------------------+
+│   │   ├── components/         # Navbar, Footer, ProductCard, AdminNavbar, ProtectedRoute
+│   │   ├── context/            # AuthContext (user state) & CartContext (shopping bag)
+│   │   ├── pages/              # Home, Products, ProductDetail, Cart, Checkout, MyOrders, Login
+│   │   │   └── admin/          # AdminDashboard, AdminProducts, AdminOrders, AdminLogin
+│   │   ├── services/           # api.js (Axios instance with JWT interceptors)
+│   │   └── utils/              # formatters.js (currency, dates, order codes)
+│   ├── vercel.json             # Vercel SPA routing fallback rule
+│   └── tailwind.config.js      # Palette and typography theme
+│
+└── server/                     # Backend (Node.js + Express + MongoDB)
+    ├── config/                 # db.js (Mongoose connection)
+    ├── controllers/            # authController, productController, orderController, adminController
+    ├── middleware/             # authMiddleware (JWT & admin guard), errorMiddleware
+    ├── models/                 # User.js, Product.js, Order.js
+    ├── routes/                 # authRoutes, productRoutes, orderRoutes, adminRoutes
+    ├── utils/                  # payhere.js (MD5 hash), seedData.js (demo catalog)
+    └── server.js               # Application entry point
 ```
 
 ---
 
 ## Database Design
 
-### User Model (`User.js`)
-- `name`: String (Required)
-- `email`: String (Required, Unique, Lowercase)
-- `password`: String (Required, Hashed with bcrypt)
-- `phone`: String (Optional)
-- `role`: String (Enum: `['customer', 'admin']`, Default: `'customer'`)
-- `timestamps`: Created & Updated timestamps
+### 1. `User` Model
+- `name` (String, required)
+- `email` (String, required, unique, indexed)
+- `password` (String, required, bcrypt hashed)
+- `role` (String, enum: `['customer', 'admin']`, default: `'customer'`)
+- `phone` (String)
 
-### Product Model (`Product.js`)
-- `name`: String (Required, Trimmed)
-- `description`: String (Required)
-- `category`: String (Enum: `['Skincare', 'Haircare', 'Makeup', 'Body Care', 'Fragrance', 'Personal Care']`)
-- `brand`: String (Required)
-- `price`: Number (Required, Min: 0)
-- `image`: String (Required URL)
-- `stock`: Number (Required, Min: 0, Default: 0)
-- `isActive`: Boolean (Default: `true`)
-- `timestamps`: Created & Updated timestamps
+### 2. `Product` Model
+- `name` (String, required)
+- `description` (String, required)
+- `category` (String, required, indexed)
+- `brand` (String, required)
+- `price` (Number, required)
+- `image` (String, required)
+- `stock` (Number, required, default: 0)
+- `isActive` (Boolean, default: true)
 
-### Order Model (`Order.js`)
-- `user`: ObjectId (Ref: `User`, Required)
-- `items`: Array of embedded objects:
-  - `product`: ObjectId (Ref: `Product`)
-  - `name`: String
-  - `price`: Number
-  - `quantity`: Number (Min: 1)
-  - `image`: String
-- `subtotal`: Number (Required)
-- `deliveryFee`: Number (Default: 500 LKR)
-- `total`: Number (Required)
-- `paymentMethod`: String (Enum: `['PayHere', 'WhatsApp']`)
-- `paymentStatus`: String (Enum: `['Pending', 'Paid', 'Failed']`, Default: `'Pending'`)
-- `orderStatus`: String (Enum: `['Pending', 'Confirmed', 'Processing', 'Shipped', 'Delivered', 'Cancelled']`, Default: `'Pending'`)
-- `customerName`: String (Required)
-- `phone`: String (Required)
-- `shippingAddress`: String (Required)
-- `timestamps`: Created & Updated timestamps
+### 3. `Order` Model
+- `user` (ObjectId ref User, required)
+- `customerName`, `email`, `phone`, `shippingAddress`, `city` (Strings)
+- `items`: Array of `{ product: ObjectId, name: String, price: Number, quantity: Number, image: String }`
+- `subtotal` (Number), `deliveryFee` (Number, default: 500), `total` (Number)
+- `paymentMethod` (enum: `['PayHere', 'WhatsApp']`)
+- `paymentStatus` (enum: `['Pending', 'Paid', 'Failed']`)
+- `orderStatus` (enum: `['Pending', 'Confirmed', 'Processing', 'Shipped', 'Delivered', 'Cancelled']`)
 
 ---
 
-## API Endpoints
+## Important Technical & Security Decisions
 
-### Authentication (`/api/auth`)
-| Method | Endpoint | Access | Description |
-| :--- | :--- | :--- | :--- |
-| `POST` | `/api/auth/register` | Public | Register new customer account |
-| `POST` | `/api/auth/login` | Public | Authenticate user & receive JWT |
-| `GET` | `/api/auth/me` | Protected | Retrieve authenticated user profile |
-
-### Products (`/api/products`)
-| Method | Endpoint | Access | Description |
-| :--- | :--- | :--- | :--- |
-| `GET` | `/api/products` | Public | Get active products with `search`, `category`, `sort` |
-| `GET` | `/api/products/:id` | Public | Get single product by ID |
-| `GET` | `/api/products/admin/all` | Admin | Get all products (including inactive) |
-| `POST` | `/api/products` | Admin | Create a new cosmetics product |
-| `PUT` | `/api/products/:id` | Admin | Update product information, price, or stock |
-| `DELETE` | `/api/products/:id` | Admin | Remove product from catalog |
-
-### Orders & Checkout (`/api/orders`)
-| Method | Endpoint | Access | Description |
-| :--- | :--- | :--- | :--- |
-| `POST` | `/api/orders` | Customer | Place order, validate stock & deduct inventory |
-| `GET` | `/api/orders/my-orders` | Customer | Retrieve current user's past orders |
-| `GET` | `/api/orders/:id` | Protected | View single order detail |
-| `GET` | `/api/orders/:id/payhere-params` | Customer | Generate PayHere checkout parameters and hash |
-| `POST` | `/api/orders/:id/pay` | Customer | Mark order payment as Paid |
-| `POST` | `/api/orders/payhere-notify` | Public | PayHere Instant Payment Notification (IPN) webhook |
-
-### Admin Management (`/api/admin`)
-| Method | Endpoint | Access | Description |
-| :--- | :--- | :--- | :--- |
-| `GET` | `/api/admin/dashboard` | Admin | Fetch metrics (Total Products, Orders, Revenue) |
-| `GET` | `/api/admin/orders` | Admin | View all orders across all customers |
-| `PUT` | `/api/admin/orders/:id/status` | Admin | Update order status and payment status |
+1. **Server-Side Price Verification**:
+   The frontend never dictates line-item prices. When an order is created, the backend re-queries each product's price from MongoDB to compute the total, preventing client price manipulation.
+2. **Real-Time Inventory Integrity**:
+   Placing an order decrements stock atomically. If an admin marks an order as `Cancelled`, stock is automatically incremented back to the catalog.
+3. **PayHere Hash Generation**:
+   The server generates the required MD5 checksum using `crypto.createHash('md5')` matching the official formula:
+   `MD5(merchant_id + order_id + amount + currency + MD5(merchant_secret))`
+4. **Structured WhatsApp Order Format**:
+   The WhatsApp ordering flow generates a readable, itemized message pre-filled with customer details, quantities, subtotal, delivery fee, and a clean human-readable order code (`#ORD-XXXXXX`).
+5. **Role-Based Access Control (RBAC)**:
+   Sensitive administrative endpoints are strictly guarded by JWT verification and role checks (`adminMiddleware`). Non-admin users are blocked with 403 Forbidden.
+6. **Clean E-Commerce Identifier Format**:
+   Internal 24-character MongoDB ObjectIds are abstracted into professional order codes (`#ORD-XXXXXX`) across all customer and admin screens.
 
 ---
 
-## Authentication & Authorization
-
-- **JWT Tokens:** Issued upon login or registration containing `id` and `role`. Signed using `JWT_SECRET` and expires in 30 days.
-- **Request Interceptor:** Client Axios instance reads `localStorage` and appends `Authorization: Bearer <token>` to requests.
-- **Password Security:** Passwords hashed with 10 rounds of salted bcrypt before being persisted. Passwords are never returned in queries (`.select('-password')`).
-- **Admin Protection:**
-  - Route middleware `admin` strictly verifies `req.user.role === 'admin'`. Unauthorized requests receive `403 Forbidden`.
-  - Frontend `AdminRoute` component redirects non-admin customers attempting to visit `/admin/*` back to the home page or login screen.
-
----
-
-## PayHere Sandbox Integration
-
-1. When a customer selects **PayHere Online Payment** during checkout, the order is first registered in the database with `paymentStatus: 'Pending'`.
-2. The client requests the signed PayHere payload from `/api/orders/:id/payhere-params`.
-3. The server calculates the standard PayHere hash using Node.js `crypto`:
-   $$\text{Hash} = \text{MD5}(\text{merchant\_id} + \text{order\_id} + \text{amount} + \text{currency} + \text{MD5}(\text{merchant\_secret}).\text{toUpperCase()}).\text{toUpperCase()}$$
-4. The client modal presents the sandbox parameters and allows simulated test confirmation.
-5. Upon confirmation, the backend endpoint updates the order to `paymentStatus: 'Paid'` and `orderStatus: 'Confirmed'`.
-6. A webhook receiver (`POST /api/orders/payhere-notify`) is also implemented to handle external PayHere IPN notifications.
-
----
-
-## WhatsApp Order Flow
-
-1. When a customer selects **Order via WhatsApp**, the order is saved in the database with `paymentMethod: 'WhatsApp'`.
-2. The client builds the exact formatted text payload specified in the assessment requirements:
-   ```text
-   Hello, I would like to place an order.
-
-   Customer:
-   Name: Nimasha Perera
-   Phone: 0771234567
-
-   Order:
-   1. Hydrating Hyaluronic Acid Serum - 2 x Rs. 3800
-   2. Volumizing Biotin Hair Shampoo - 1 x Rs. 3500
-
-   Subtotal: Rs. 11100
-   Delivery: Rs. 500
-   Total: Rs. 11600
-
-   Address:
-   No. 45, Flower Road, Colombo
-
-   Order ID: #ORD-DE1850
-   ```
-3. The client opens WhatsApp via `https://wa.me/{WHATSAPP_NUMBER}?text={encodedMessage}`, pre-populating the chat with the retailer.
-4. The cart is cleared and the customer is redirected to their order history.
-
----
-
-## Setup Instructions
+## Local Setup Instructions
 
 ### Prerequisites
-- [Node.js](https://nodejs.org/) (v18 or higher)
-- [MongoDB Atlas Account](https://www.mongodb.com/atlas) or local MongoDB instance
+- Node.js (v18+)
+- MongoDB Atlas connection string (or local MongoDB)
 
-### 1. Clone & Install Dependencies
+### 1. Clone the Repository
 ```bash
-# Clone the repository
-git clone <repository-url>
-cd TaskDartCode
+git clone https://github.com/Nikshan0702/LUMINA_Ecommerce.git
+cd LUMINA_Ecommerce
+```
 
-# Install backend dependencies
+### 2. Backend Setup
+```bash
 cd server
-npm install
-
-# Install frontend dependencies
-cd ../client
 npm install
 ```
 
----
-
-## Environment Variables
-
-Create a `.env` file in the `server/` directory:
-
+Create a `.env` file in the `server` folder:
 ```env
 PORT=5001
-MONGO_URI=mongodb+srv://<username>:<password>@cluster0.mongodb.net/cosmetics_store?retryWrites=true&w=majority
-JWT_SECRET=your_jwt_secret_key_here
+MONGO_URI=your_mongodb_connection_string
+JWT_SECRET=your_jwt_secret_key
 PAYHERE_MERCHANT_ID=1211149
-PAYHERE_SECRET=4MTg5MzIyNDMyMzExOTUxNDk1MTIzNDU2
+PAYHERE_SECRET=your_payhere_secret
 WHATSAPP_NUMBER=94771129911
-FRONTEND_URL=http://localhost:5173
 NODE_ENV=development
 ```
 
-*(A template is provided at `server/.env.example`)*
-
----
-
-## Running the Project
-
-### 1. Seed Initial Cosmetics Data
-Populate the database with realistic cosmetics products (Skincare, Haircare, Makeup, etc.) and demo users:
+Seed initial cosmetics catalog and demo users:
 ```bash
-cd server
 npm run seed
 ```
 
-#### Demo Login Accounts:
-- **Admin Account:** `admin@lumina.com` / `adminpassword123`
-- **Customer Account:** `customer@example.com` / `customerpassword123`
-*(Note: A one-click "Quick-Fill" button is provided on the Sign In page for interview evaluation).*
-
-### 2. Start the Backend API
+Start the backend:
 ```bash
-cd server
 npm run dev
-# Server runs on http://localhost:5001
+# Server running on http://localhost:5001
 ```
 
-### 3. Start the Frontend Application
+### 3. Frontend Setup
 ```bash
-cd client
+cd ../client
+npm install
 npm run dev
-# Vite runs on http://localhost:5173
+# Vite running on http://localhost:5173
 ```
 
 ---
 
-## Deployment
+## Assumptions & Limitations
 
-### Frontend (Vercel)
-1. Link the repository to Vercel and set the Root Directory to `client`.
-2. Framework Preset: **Vite**.
-3. Build Command: `npm run build`, Output Directory: `dist`.
-4. Configure environment variable for production API endpoint if decoupled.
-
-### Backend (Render / Railway)
-1. Deploy a new Web Service pointing to the repository, setting Root Directory to `server`.
-2. Build Command: `npm install`, Start Command: `node server.js`.
-3. Provide environment variables in the dashboard: `MONGO_URI`, `JWT_SECRET`, `PAYHERE_MERCHANT_ID`, `PAYHERE_SECRET`, `WHATSAPP_NUMBER`, `FRONTEND_URL`.
-
-### Database (MongoDB Atlas)
-1. Deploy an M0 free tier cluster on MongoDB Atlas.
-2. In Network Access, whitelist `0.0.0.0/0` (or host IP).
-3. Copy the connection string into `MONGO_URI`.
-
----
-
-## Security Approach
-
-1. **Password Hashing:** Passwords hashed with bcrypt; raw passwords never saved or logged.
-2. **JWT Authorization:** Stateless Bearer tokens verified on protected customer and admin routes.
-3. **Price & Stock Integrity:** Order totals and line prices are re-queried and computed from the database on the backend to prevent frontend parameter tampering.
-4. **Environment Variables:** All secrets, payment keys, and database credentials are kept out of source code.
-5. **CORS & Input Validation:** Strict input validation on registration, order structures, stock quantities, and MongoDB ObjectIds.
-6. **No Leaked Errors:** Production error responses do not leak database stack traces to the client.
-
----
-
-## Assumptions
-
-1. Delivery fee is set to a flat **Rs. 500** for all orders across Sri Lanka.
-2. The store currency is **LKR (Sri Lankan Rupees)**.
-3. WhatsApp ordering relies on the customer's device having access to WhatsApp Web or the WhatsApp mobile app.
-4. PayHere Sandbox merchant credentials use standard testing keys provided in PayHere development documentation.
-
----
-
-## Limitations
-
-1. **PayHere Live Payments:** Configured exclusively for sandbox mode; requires merchant verification for live production transactions.
-2. **Single Currency:** Transactions are calculated in LKR.
-3. **SMS Notifications:** Notifications are delivered through the in-app order tracker and WhatsApp chat rather than third-party SMS gateways.
+- **Currency**: Transactions and pricing are in Sri Lankan Rupees (LKR).
+- **Delivery**: Flat island-wide delivery fee of Rs. 500 is applied.
+- **PayHere**: Configured using standard PayHere Sandbox test merchant credentials.
+- **WhatsApp**: Requires the customer's device to have WhatsApp or WhatsApp Web available.
