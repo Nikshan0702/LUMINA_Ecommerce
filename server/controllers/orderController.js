@@ -246,11 +246,13 @@ const updateOrderStatus = async (req, res) => {
       return res.status(400).json({ message: 'Invalid order status value' });
     }
 
+    const previousStatus = order.orderStatus;
+
     if (orderStatus) order.orderStatus = orderStatus;
     if (paymentStatus) order.paymentStatus = paymentStatus;
 
-    // Automatically restore stock if an order is cancelled
-    if (orderStatus === 'Cancelled') {
+    // Automatically restore stock once if an order transitions to cancelled
+    if (orderStatus === 'Cancelled' && previousStatus !== 'Cancelled') {
       for (const item of order.items) {
         await Product.findByIdAndUpdate(item.product, {
           $inc: { stock: item.quantity }
