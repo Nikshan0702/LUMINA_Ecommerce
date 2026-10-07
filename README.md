@@ -4,6 +4,21 @@ A modern, responsive full-stack MERN (MongoDB, Express, React, Node.js) E-Commer
 
 ---
 
+### Quick Reference & Live Links
+- **Live Backend API**: [https://lumina-ecommerce-gmqq.onrender.com](https://lumina-ecommerce-gmqq.onrender.com)
+- **API Health Check**: [https://lumina-ecommerce-gmqq.onrender.com/api/health](https://lumina-ecommerce-gmqq.onrender.com/api/health)
+- **GitHub Repository**: [https://github.com/Nikshan0702/LUMINA_Ecommerce](https://github.com/Nikshan0702/LUMINA_Ecommerce)
+- **Business WhatsApp Number**: `+94771129911`
+
+#### Demo Login Credentials (for Evaluation):
+| Role | Email | Password | Access |
+| :--- | :--- | :--- | :--- |
+| **Admin** | `admin@lumina.com` | `adminpassword123` | Full Admin Back-Office (`/admin/dashboard`, `/admin/products`, `/admin/orders`) |
+| **Customer** | `customer@example.com` | `customerpassword123` | Storefront Shopping, Bag, Checkout, Order Tracking |
+*(One-click demo buttons are also provided on the sign-in screen for instant evaluator access).*
+
+---
+
 ## Table of Contents
 - [Overview](#overview)
 - [Features](#features)
@@ -277,7 +292,7 @@ TaskDartCode/
    Address:
    No. 45, Flower Road, Colombo
 
-   Order ID: 6702419a7e80d2efb4501b8a
+   Order ID: #ORD-DE1850
    ```
 3. The client opens WhatsApp via `https://wa.me/{WHATSAPP_NUMBER}?text={encodedMessage}`, pre-populating the chat with the retailer.
 4. The cart is cleared and the customer is redirected to their order history.
@@ -317,7 +332,7 @@ MONGO_URI=mongodb+srv://<username>:<password>@cluster0.mongodb.net/cosmetics_sto
 JWT_SECRET=your_jwt_secret_key_here
 PAYHERE_MERCHANT_ID=1211149
 PAYHERE_SECRET=4MTg5MzIyNDMyMzExOTUxNDk1MTIzNDU2
-WHATSAPP_NUMBER=94771234567
+WHATSAPP_NUMBER=94771129911
 FRONTEND_URL=http://localhost:5173
 NODE_ENV=development
 ```
@@ -401,4 +416,3 @@ npm run dev
 1. **PayHere Live Payments:** Configured exclusively for sandbox mode; requires merchant verification for live production transactions.
 2. **Single Currency:** Transactions are calculated in LKR.
 3. **SMS Notifications:** Notifications are delivered through the in-app order tracker and WhatsApp chat rather than third-party SMS gateways.
-# LUMINA_Ecommerce
