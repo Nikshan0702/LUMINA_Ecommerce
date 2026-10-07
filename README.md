@@ -10,6 +10,19 @@
 
 ---
 
+## Application Screenshots
+
+### Home Page
+![Home Page](screenshots/01-home-hero.png)
+
+### Products Catalog & Filtering
+![Products Catalog](screenshots/02-products-catalog.png)
+
+### Shopping Bag & Order Summary
+![Shopping Bag](screenshots/03-shopping-bag.png)
+
+---
+
 ## Demo Accounts for Testing
 
 You can use these accounts to test the application, or use the one-click demo buttons on the login page:
