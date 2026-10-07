@@ -12,10 +12,12 @@ const Footer = () => {
           {/* Brand Col */}
           <div className="space-y-4">
             <div className="flex items-center gap-2.5">
-              <div className="w-8 h-8 rounded-full bg-[#EDE5F8] flex items-center justify-center text-[#834FD4]">
-                <Sparkles className="w-4 h-4" />
-              </div>
-              <span className="text-xl font-bold text-white tracking-wide">LUMINA</span>
+              <img 
+                src="/logo.png" 
+                alt="Lumina Cosmetics & Beauty" 
+                className="w-9 h-9 rounded-full object-cover ring-2 ring-[#443859]" 
+              />
+              <span className="text-xl font-extrabold text-white tracking-wide">LUMINA</span>
             </div>
             <p className="text-xs text-[#9B98A0] leading-relaxed max-w-xs">
               Clean botanical cosmetics and luxury beauty essentials formulated to nourish, protect, and highlight your everyday radiance.

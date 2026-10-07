@@ -35,9 +35,11 @@ const AdminLogin = () => {
     <div className="min-h-screen bg-[#0F172A] flex flex-col items-center justify-center px-4 py-16 text-slate-100">
       <div className="max-w-md w-full bg-slate-800/90 p-8 sm:p-10 rounded-3xl border border-slate-700 shadow-2xl space-y-6">
         <div className="text-center space-y-2">
-          <div className="w-12 h-12 rounded-2xl bg-amber-500/20 text-amber-400 border border-amber-500/30 flex items-center justify-center mx-auto shadow-sm mb-2">
-            <ShieldCheck className="w-6 h-6" />
-          </div>
+          <img 
+            src="/logo.png" 
+            alt="Lumina Admin" 
+            className="w-16 h-16 rounded-full object-cover mx-auto mb-2 shadow-lg ring-2 ring-slate-700" 
+          />
           <h1 className="text-3xl font-bold text-white">Admin Portal</h1>
           <p className="text-xs text-slate-400">
             Sign in with administrative credentials to access store operations

@@ -22,11 +22,13 @@ const Navbar = () => {
         <div className="flex items-center justify-between h-20">
           {/* LEFT: Brand Logo */}
           <Link to="/" className="flex items-center gap-3 group">
-            <div className="w-9 h-9 rounded-full bg-[#EDE5F8] text-[#834FD4] flex items-center justify-center transition-transform group-hover:scale-105">
-              <Sparkles className="w-4 h-4" />
-            </div>
+            <img 
+              src="/logo.png" 
+              alt="Lumina Cosmetics & Beauty" 
+              className="w-10 h-10 rounded-full object-cover shadow-sm ring-2 ring-[#EDE5F8] transition-transform group-hover:scale-105" 
+            />
             <div className="flex flex-col">
-              <span className="text-xl font-bold tracking-tight text-[#171719] leading-none">
+              <span className="text-xl font-extrabold tracking-tight text-[#171719] leading-none">
                 LUMINA
               </span>
               <span className="text-[10px] tracking-[0.2em] text-[#6B6870] uppercase font-medium mt-1">

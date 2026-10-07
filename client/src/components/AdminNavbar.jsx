@@ -24,10 +24,12 @@ const AdminNavbar = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center gap-6">
-            <div className="flex items-center gap-2 text-white font-bold text-sm">
-              <div className="w-8 h-8 rounded-xl bg-amber-500/20 border border-amber-500/30 flex items-center justify-center text-amber-400">
-                <ShieldCheck className="w-4 h-4" />
-              </div>
+            <div className="flex items-center gap-2.5 text-white font-bold text-sm">
+              <img 
+                src="/logo.png" 
+                alt="Lumina Admin" 
+                className="w-8 h-8 rounded-full object-cover ring-2 ring-slate-700" 
+              />
               <span className="tracking-tight font-bold">Lumina Admin</span>
             </div>
 

@@ -45,9 +45,11 @@ const Register = () => {
     <div className="min-h-[75vh] flex items-center justify-center px-4 py-16">
       <div className="max-w-md w-full bg-white p-8 sm:p-10 rounded-3xl border border-[#E8E3EF] shadow-card space-y-6">
         <div className="text-center space-y-2">
-          <div className="w-12 h-12 rounded-full bg-[#EDE5F8] text-[#834FD4] flex items-center justify-center mx-auto mb-2">
-            <Sparkles className="w-5 h-5" />
-          </div>
+          <img 
+            src="/logo.png" 
+            alt="Lumina Cosmetics" 
+            className="w-16 h-16 rounded-full object-cover mx-auto mb-2 shadow-sm ring-2 ring-[#EDE5F8]" 
+          />
           <h1 className="text-3xl font-bold text-[#171719]">
             Create Account
           </h1>
