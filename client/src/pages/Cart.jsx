@@ -35,11 +35,8 @@ const Cart = () => {
       {/* Title */}
       <div className="flex items-end justify-between border-b border-[#E8E3EF] pb-6">
         <div>
-          <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#834FD4]">
-            SHOPPING BAG
-          </span>
-          <h1 className="text-3xl sm:text-4xl font-bold text-[#171719] mt-1">
-            YOUR BAG
+          <h1 className="text-3xl sm:text-4xl font-bold text-[#171719]">
+            Shopping Bag
           </h1>
         </div>
         <button

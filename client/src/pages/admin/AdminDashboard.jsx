@@ -30,10 +30,7 @@ const AdminDashboard = () => {
 
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
         <div>
-          <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#834FD4] block">
-            ADMIN OVERVIEW
-          </span>
-          <h1 className="text-2xl sm:text-3xl font-bold text-[#171719] mt-1">
+          <h1 className="text-2xl sm:text-3xl font-bold text-[#171719]">
             Store Performance Dashboard
           </h1>
           <p className="text-xs text-[#6B6870] mt-1">

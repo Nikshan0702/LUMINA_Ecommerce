@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Sparkles, ArrowRight, ShieldCheck, MessageCircle, Droplets, Leaf, Shield, HeartHandshake, CheckCircle2 } from 'lucide-react';
+import { ArrowRight, ShieldCheck, MessageCircle, Leaf, HeartHandshake } from 'lucide-react';
 import api from '../services/api';
 import ProductCard from '../components/ProductCard';
 
@@ -76,11 +76,6 @@ const Home = () => {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
             {/* Left Content */}
             <div className="lg:col-span-7 space-y-6 text-center lg:text-left">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#EDE5F8] border border-[#DFCFF4] text-[#834FD4] text-xs font-semibold tracking-wide">
-                <Sparkles className="w-3.5 h-3.5" />
-                <span>CLEAN. EFFECTIVE. GENTLE.</span>
-              </div>
-
               <h1 className="text-4xl sm:text-6xl xl:text-7xl font-bold text-[#171719] tracking-tight leading-[1.08]">
                 REAL CARE. <br />
                 <span className="italic font-normal text-[#834FD4]">NATURAL GLOW.</span> <br />
@@ -90,50 +85,9 @@ const Home = () => {
               <p className="text-base sm:text-lg text-[#6B6870] max-w-xl mx-auto lg:mx-0 font-normal leading-relaxed">
                 Elevate your everyday ritual with dermatologist-tested botanical formulas crafted for healthy, luminous, and resilient skin.
               </p>
-
-              <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
-                <Link
-                  to="/products"
-                  className="w-full sm:w-auto px-8 py-4 bg-[#9B6DE3] hover:bg-[#834FD4] text-white font-semibold text-sm rounded-full shadow-soft transition-all duration-200 flex items-center justify-center gap-2.5 group"
-                >
-                  Explore Collection
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                </Link>
-                <Link
-                  to="/products?category=Skincare"
-                  className="w-full sm:w-auto px-7 py-4 bg-white hover:bg-[#FAF9FD] text-[#171719] border border-[#E8E3EF] hover:border-[#DFCFF4] font-semibold text-sm rounded-full transition-all flex items-center justify-center shadow-card"
-                >
-                  Shop Skincare
-                </Link>
-              </div>
-
-              {/* Social Proof */}
-              <div className="pt-6 flex items-center justify-center lg:justify-start gap-4">
-                <div className="flex -space-x-2">
-                  <img
-                    className="inline-block h-9 w-9 rounded-full ring-2 ring-white object-cover"
-                    src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=120&q=80"
-                    alt="Customer"
-                  />
-                  <img
-                    className="inline-block h-9 w-9 rounded-full ring-2 ring-white object-cover"
-                    src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=120&q=80"
-                    alt="Customer"
-                  />
-                  <img
-                    className="inline-block h-9 w-9 rounded-full ring-2 ring-white object-cover"
-                    src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=120&q=80"
-                    alt="Customer"
-                  />
-                </div>
-                <div className="text-left">
-                  <div className="text-sm font-bold text-[#171719]">200K+</div>
-                  <div className="text-xs text-[#6B6870]">Happy Customers</div>
-                </div>
-              </div>
             </div>
 
-            {/* Right Lifestyle Visual with Floating Cards */}
+            {/* Right Lifestyle Visual */}
             <div className="lg:col-span-5 relative mt-6 lg:mt-0">
               <div className="relative mx-auto max-w-md lg:max-w-none rounded-3xl overflow-hidden shadow-soft border-4 border-white bg-[#EDE5F8]">
                 <img
@@ -141,39 +95,6 @@ const Home = () => {
                   alt="Skincare editorial visual"
                   className="w-full h-[460px] sm:h-[500px] object-cover object-center"
                 />
-              </div>
-
-              {/* Floating Card 1: Hydrate (Top Right on desktop) */}
-              <div className="mt-3 sm:mt-0 sm:absolute sm:-top-5 sm:-right-4 bg-white/95 backdrop-blur-md p-3.5 rounded-2xl border border-[#E8E3EF] shadow-card flex items-center gap-3">
-                <div className="w-9 h-9 rounded-xl bg-[#EDE5F8] text-[#834FD4] flex items-center justify-center shrink-0">
-                  <Droplets className="w-4 h-4" />
-                </div>
-                <div>
-                  <h4 className="text-xs font-bold text-[#171719]">Hydrate</h4>
-                  <p className="text-[11px] text-[#6B6870]">Deep botanical moisture</p>
-                </div>
-              </div>
-
-              {/* Floating Card 2: Nourish (Bottom Left on desktop) */}
-              <div className="mt-2 sm:mt-0 sm:absolute sm:bottom-12 sm:-left-6 bg-white/95 backdrop-blur-md p-3.5 rounded-2xl border border-[#E8E3EF] shadow-card flex items-center gap-3">
-                <div className="w-9 h-9 rounded-xl bg-[#EBF3EC] text-[#50805C] flex items-center justify-center shrink-0">
-                  <Leaf className="w-4 h-4" />
-                </div>
-                <div>
-                  <h4 className="text-xs font-bold text-[#171719]">Nourish</h4>
-                  <p className="text-[11px] text-[#6B6870]">Healthy-looking glow</p>
-                </div>
-              </div>
-
-              {/* Floating Card 3: Protect (Bottom Right on desktop) */}
-              <div className="mt-2 sm:mt-0 sm:absolute sm:-bottom-4 sm:right-6 bg-white/95 backdrop-blur-md p-3.5 rounded-2xl border border-[#E8E3EF] shadow-card flex items-center gap-3">
-                <div className="w-9 h-9 rounded-xl bg-[#FCEAEF] text-[#C0496E] flex items-center justify-center shrink-0">
-                  <Shield className="w-4 h-4" />
-                </div>
-                <div>
-                  <h4 className="text-xs font-bold text-[#171719]">Protect</h4>
-                  <p className="text-[11px] text-[#6B6870]">Daily skin barrier defense</p>
-                </div>
               </div>
             </div>
           </div>
@@ -229,13 +150,10 @@ const Home = () => {
 
       {/* 3. Soft Pastel Category Cards */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10">
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8">
           <div>
-            <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#834FD4]">
-              Curated Collections
-            </span>
-            <h2 className="text-2xl sm:text-4xl font-bold text-[#171719] mt-1">
-              Shop by Beauty Category
+            <h2 className="text-2xl sm:text-3xl font-bold text-[#171719]">
+              Shop by Category
             </h2>
           </div>
           <Link
@@ -283,15 +201,12 @@ const Home = () => {
         </div>
       </section>
 
-      {/* 4. Featured Bestsellers Grid */}
+      {/* 4. Featured Products Grid */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10">
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8">
           <div>
-            <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#834FD4]">
-              Iconic Formulations
-            </span>
-            <h2 className="text-2xl sm:text-4xl font-bold text-[#171719] mt-1">
-              Featured Cosmetics & Care
+            <h2 className="text-2xl sm:text-3xl font-bold text-[#171719]">
+              Featured Products
             </h2>
           </div>
           <Link
@@ -315,31 +230,6 @@ const Home = () => {
             ))}
           </div>
         )}
-      </section>
-
-      {/* 5. Promotional Editorial Section */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-[#EDE5F8] rounded-3xl p-8 sm:p-14 border border-[#DFCFF4] relative overflow-hidden">
-          <div className="max-w-xl space-y-4">
-            <span className="px-3.5 py-1 bg-white text-[#834FD4] text-xs font-bold rounded-full uppercase tracking-wider inline-block shadow-sm">
-              Modern Beauty Experience
-            </span>
-            <h3 className="text-3xl sm:text-4xl font-bold text-[#171719] leading-tight">
-              Designed for effortless, glowing everyday care.
-            </h3>
-            <p className="text-sm text-[#6B6870] leading-relaxed">
-              Experience safe PayHere online card checkout or instant one-click order messaging via WhatsApp. Flat Rs. 500 delivery island-wide.
-            </p>
-            <div className="pt-2 flex flex-wrap gap-4">
-              <Link
-                to="/products"
-                className="px-7 py-3.5 bg-[#9B6DE3] hover:bg-[#834FD4] text-white text-xs font-bold rounded-full shadow-soft transition-colors"
-              >
-                Shop Essentials
-              </Link>
-            </div>
-          </div>
-        </div>
       </section>
     </div>
   );

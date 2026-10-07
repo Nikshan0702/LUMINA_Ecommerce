@@ -140,10 +140,7 @@ Order ID: ${formatOrderId(createdOrder._id)}`;
         >
           <ArrowLeft className="w-4 h-4" /> Return to Bag
         </Link>
-        <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#834FD4] block">
-          SECURE CHECKOUT
-        </span>
-        <h1 className="text-3xl sm:text-4xl font-bold text-[#171719] mt-1">
+        <h1 className="text-3xl sm:text-4xl font-bold text-[#171719]">
           Shipping & Payment
         </h1>
       </div>

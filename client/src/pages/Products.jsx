@@ -85,14 +85,11 @@ const Products = () => {
       {/* Editorial Header & Search */}
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-[#E8E3EF] pb-8">
         <div>
-          <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#834FD4]">
-            SHOP ALL
-          </span>
-          <h1 className="text-3xl sm:text-5xl font-bold text-[#171719] mt-1">
-            Discover Your Everyday Essentials
+          <h1 className="text-3xl sm:text-4xl font-bold text-[#171719]">
+            All Products
           </h1>
-          <p className="text-sm text-[#6B6870] mt-2 max-w-lg">
-            Gentle botanical formulas, concentrated active serums, and luxury cosmetics formulated for healthy radiant skin.
+          <p className="text-sm text-[#6B6870] mt-1.5 max-w-lg">
+            Gentle botanical formulas, active serums, and luxury beauty essentials formulated for healthy radiant skin.
           </p>
         </div>
 
